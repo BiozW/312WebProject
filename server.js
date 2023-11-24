@@ -18,7 +18,7 @@ app.use(cookieParser());
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, "public/img/");
+  callback(null, "public/img/");
   },
 
   filename: (req, file, cb) => {
@@ -43,7 +43,7 @@ const con = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database: "mydb",
+  database: "userdata",
 });
 
 con.connect((err) => {
