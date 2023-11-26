@@ -130,7 +130,7 @@ app.get("/logout", (req, res) => {
 //   res.redirect("feed.html");
 // });
 
-//Register
+//Registers
 app.post("/checkLogin", async (req, res) => {
     let sql = `SELECT username, img, password FROM userInfo`;
     let result = await queryDB(sql);
