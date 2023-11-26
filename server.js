@@ -109,26 +109,26 @@ app.get("/logout", (req, res) => {
 });
 
 //ทำให้สมบูรณ์
-// app.get("/readPost", async (req, res) => {
-//   let sql =
-//     "CREATE TABLE IF NOT EXISTS userPost (username VARCHAR(255), post VARCHAR(500))";
-//   let result = await queryDB(sql);
-//   sql = `SELECT post, username FROM userPost`;
-//   result = await queryDB(sql);
-//   result = Object.assign({}, result);
-//   console.log(result);
-//   res.json(result);
-// });
+app.get("/readPost", async (req, res) => {
+  let sql =
+    "CREATE TABLE IF NOT EXISTS userPost (username VARCHAR(255), post VARCHAR(500))";
+  let result = await queryDB(sql);
+  sql = `SELECT post, username FROM userPost`;
+  result = await queryDB(sql);
+  result = Object.assign({}, result);
+  console.log(result);
+  res.json(result);
+});
 
 //ทำให้สมบูรณ์
-// app.post("/writePost", async (req, res) => {
-//     let sql =
-//     "CREATE TABLE IF NOT EXISTS userPost (username VARCHAR(255), post VARCHAR(500))";
-//   let result = await queryDB(sql);
-//   sql = `INSERT INTO userPost (username,post) VALUES ("${req.body.user}", "${req.body.message}")`;
-//   result = await queryDB(sql);
-//   res.redirect("feed.html");
-// });
+app.post("/writePost", async (req, res) => {
+    let sql =
+    "CREATE TABLE IF NOT EXISTS userPost (username VARCHAR(255), post VARCHAR(500))";
+  let result = await queryDB(sql);
+  sql = `INSERT INTO userPost (username,post) VALUES ("${req.body.user}", "${req.body.message}")`;
+  result = await queryDB(sql);
+  res.redirect("feed.html");
+});
 
 //Registers
 app.post("/checkLogin", async (req, res) => {
@@ -146,7 +146,7 @@ app.post("/checkLogin", async (req, res) => {
       res.cookie("username", result[keys[numberOfKeys]].username);
       res.cookie("img", result[keys[numberOfKeys]].img);
       IsCorrect = true;
-      return res.redirect("feed.html");
+      return res.redirect("index.html");
     }
   }
   if (IsCorrect == false) {
