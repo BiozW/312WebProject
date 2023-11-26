@@ -38,7 +38,7 @@ const imageFilter = (req, file, cb) => {
   cb(null, true);
 };
 
-// ใส่ค่าตามที่เราตั้งไว้ใน mysql
+// mysql
 const con = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -63,7 +63,7 @@ const queryDB = (sql) => {
   });
 };
 
-//ทำให้สมบูรณ์
+//LOGIN
 app.post("/regisDB", async (req, res) => {
   let now_date = new Date().toISOString().slice(0, 19).replace("T", " ");
   let sql =
@@ -74,7 +74,7 @@ app.post("/regisDB", async (req, res) => {
   return res.redirect("login.html");
 });
 
-//ทำให้สมบูรณ์
+//PROFIRE
 app.post("/profilepic", async (req, res) => {
   let upload = multer({ storage: storage, fileFilter: imageFilter }).single(
     "avatar"
@@ -101,7 +101,7 @@ const updateImg = async (username, filen) => {
   console.log(result);
 };
 
-//ทำให้สมบูรณ์
+//LOGOUT
 app.get("/logout", (req, res) => {
   res.clearCookie("username");
   res.clearCookie("img");
@@ -109,28 +109,28 @@ app.get("/logout", (req, res) => {
 });
 
 //ทำให้สมบูรณ์
-app.get("/readPost", async (req, res) => {
-  let sql =
-    "CREATE TABLE IF NOT EXISTS userPost (username VARCHAR(255), post VARCHAR(500))";
-  let result = await queryDB(sql);
-  sql = `SELECT post, username FROM userPost`;
-  result = await queryDB(sql);
-  result = Object.assign({}, result);
-  console.log(result);
-  res.json(result);
-});
+// app.get("/readPost", async (req, res) => {
+//   let sql =
+//     "CREATE TABLE IF NOT EXISTS userPost (username VARCHAR(255), post VARCHAR(500))";
+//   let result = await queryDB(sql);
+//   sql = `SELECT post, username FROM userPost`;
+//   result = await queryDB(sql);
+//   result = Object.assign({}, result);
+//   console.log(result);
+//   res.json(result);
+// });
 
 //ทำให้สมบูรณ์
-app.post("/writePost", async (req, res) => {
-    let sql =
-    "CREATE TABLE IF NOT EXISTS userPost (username VARCHAR(255), post VARCHAR(500))";
-  let result = await queryDB(sql);
-  sql = `INSERT INTO userPost (username,post) VALUES ("${req.body.user}", "${req.body.message}")`;
-  result = await queryDB(sql);
-  res.redirect("feed.html");
-});
+// app.post("/writePost", async (req, res) => {
+//     let sql =
+//     "CREATE TABLE IF NOT EXISTS userPost (username VARCHAR(255), post VARCHAR(500))";
+//   let result = await queryDB(sql);
+//   sql = `INSERT INTO userPost (username,post) VALUES ("${req.body.user}", "${req.body.message}")`;
+//   result = await queryDB(sql);
+//   res.redirect("feed.html");
+// });
 
-//ทำให้สมบูรณ์
+//Register
 app.post("/checkLogin", async (req, res) => {
     let sql = `SELECT username, img, password FROM userInfo`;
     let result = await queryDB(sql);
