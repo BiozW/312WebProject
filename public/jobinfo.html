@@ -4,18 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MainPage</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/joblist.css">
     <script type="text/javascript" src="js/index.js"></script>
 </head>
 <nav>
-    <div class="topnav">
-        <a class="active" href="#home">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-        <button>a</button>
-        <textarea name="" id="" cols="30" rows="10"></textarea>
-      </div>
+    <nav class="nav-container">
+        <div id="nav-logo" >
+            <a href="/public/index.html">
+                <span>Fare <span id="judjud">:</span>D
+            </span>
+            </a>
+        </div>
+        <div class="nav-search-container">
+            <div id="findjobbox">
+                <input type="text" value="" placeholder="What job are you interested?" >
+            </div>
+            <div id="seacrhbtn">
+                <button>Search</button>
+            </div>
+            <div id="categorybox">
+                <select name="category-job" id="category-job">
+                    <option value="0">All</option>
+                    <option value="1">Delivery</option>
+                    <option value="2">Part Time</option>
+                    <option value="3">Full Time</option>
+                </select>
+            </div>
+            <div id="locationbox">
+                <select name="location-job" id="location-job">
+                    <option value="0">Location</option>                
+                    <option value="1">Bangkok</option>                
+                    <option value="2">Chanthaburi</option>                
+                </select>
+            </div> 
+            <div id="resetbtn">
+                <button>Reset</button>
+            </div>
+        </div>
+        <div id="nav-main">
+            <a href="joblist.html" >Explore</a>
+            <a href="login.html" >Login</a>
+            <a href="profile.html">
+                <img id="Portrait" src="/images/userbaseicon.png" >
+            </a>    
+        </div>
+    </nav>
 </nav>
 <body>
     
