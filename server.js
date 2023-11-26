@@ -64,15 +64,55 @@ const queryDB = (sql) => {
 };
 
 //LOGIN
-app.post("/regisDB", async (req, res) => {
-  let now_date = new Date().toISOString().slice(0, 19).replace("T", " ");
-  let sql =
-    "CREATE TABLE IF NOT EXISTS userInfo (id INT AUTO_INCREMENT PRIMARY KEY, reg_date TIMESTAMP, username VARCHAR(255), email VARCHAR(100),password VARCHAR(100),img VARCHAR(100))";
-  let result = await queryDB(sql);
-  sql = `INSERT INTO userInfo (username, reg_date, email, password, img) VALUES ("${req.body.username}", "${now_date}","${req.body.email}", "${req.body.password}", "avatar.png")`;
-  result = await queryDB(sql);
-  return res.redirect("login.html");
-});
+// app.post("/regisDB", async (req, res) => {
+//   let now_date = new Date().toISOString().slice(0, 19).replace("T", " ");
+//   let sql =
+//     "CREATE TABLE IF NOT EXISTS userInfo (id INT AUTO_INCREMENT PRIMARY KEY, reg_date TIMESTAMP, username VARCHAR(255), email VARCHAR(100),password VARCHAR(100),img VARCHAR(100))";
+//   let result = await queryDB(sql);
+//   sql = `INSERT INTO userInfo (username, reg_date, email, password, img) VALUES ("${req.body.username}", "${now_date}","${req.body.email}", "${req.body.password}", "avatar.png")`;
+//   result = await queryDB(sql);
+//   return res.redirect("login.html");
+// });
+app.post('/regisDB', async (req,res) => {
+  const { username, email, password, confirmPassword } = req.body;
+
+  if (!validateForm(password, confirmPassword)) {
+      return res.redirect('register.html?error=2'); // รหัสผ่านไม่ตรงกัน
+  }
+
+  try {
+      // สร้างตาราง userInfo ถ้ายังไม่มี
+      const createTableQuery = "CREATE TABLE IF NOT EXISTS userInfo (id INT AUTO_INCREMENT PRIMARY KEY, reg_date TIMESTAMP, username VARCHAR(255), email VARCHAR(100), password VARCHAR(100), confirmPassword VARCHAR(100), img VARCHAR(100))";
+      await queryDB(createTableQuery);
+
+      // สร้างตาราง post ถ้ายังไม่มี
+      const createTablePost = "CREATE TABLE IF NOT EXISTS userpost (id INT AUTO_INCREMENT PRIMARY KEY, reg_date TIMESTAMP, post VARCHAR(255), username VARCHAR(255))";
+      await queryDB(createTablePost);
+
+      // ตรวจสอบว่า username ซ้ำหรือไม่
+      const checkUsernameQuery = `SELECT * FROM userInfo WHERE username = "${username}"`;
+      const existingUser = await queryDB(checkUsernameQuery);
+
+      if (existingUser.length > 0) {
+          console.log("Username is already taken");
+          return res.redirect('register.html?error=1');
+      }
+
+      // Username ไม่ซ้ำ, ทำการลงทะเบียนผู้ใช้
+      const insertUserQuery = `INSERT INTO userInfo (username, email, password, confirmPassword, img) VALUES ("${username}", "${email}", "${password}", "${confirmPassword}", "avatar.png")`;
+      await queryDB(insertUserQuery);
+
+      console.log("New record created successfully");
+      return res.redirect('login.html');
+  } catch (error) {
+      console.error('Error checking username or inserting new record:', error);
+      return res.status(500).json({ error: 'Internal Server Error' });
+  }
+})
+
+function validateForm(password, confirmPassword) {
+  return password === confirmPassword;
+}
 
 //PROFIRE
 app.post("/profilepic", async (req, res) => {
@@ -91,15 +131,33 @@ app.post("/profilepic", async (req, res) => {
     }
     updateImg(req.cookies.username, req.file.filename);
     res.cookie("img", req.file.filename);
-    return res.redirect("feed.html");
+    return res.redirect("profile.html");
   });
 });
 
+// const updateImg = async (username, filen) => {
+//   let sql = `UPDATE userInfo SET img = '${filen}' WHERE username = '${username}'`;
+//   let result = await queryDB(sql);
+//   console.log(result);
+// };
 const updateImg = async (username, filen) => {
-  let sql = `UPDATE userInfo SET img = '${filen}' WHERE username = '${username}'`;
-  let result = await queryDB(sql);
-  console.log(result);
-};
+  try {
+      // ดึงข้อมูลผู้ใช้จากฐานข้อมูล MySQL
+      const getUserQuery = `SELECT * FROM userInfo WHERE username = '${username}'`;
+      const userData = await queryDB(getUserQuery);
+
+      if (userData.length > 0) {
+          // อัปเดตข้อมูลรูปภาพในฐานข้อมูล MySQL
+          const updateUserImgQuery = `UPDATE userInfo SET img = '${filen}' WHERE username = '${username}'`;
+          await queryDB(updateUserImgQuery);
+      } else {
+          console.log('User not found in the database');
+      }
+  } catch (error) {
+      console.error('Error updating user image in the database:', error);
+  }
+}
+
 
 //LOGOUT
 app.get("/logout", (req, res) => {
@@ -109,57 +167,95 @@ app.get("/logout", (req, res) => {
 });
 
 //ทำให้สมบูรณ์
-// app.get("/readPost", async (req, res) => {
-//   let sql =
-//     "CREATE TABLE IF NOT EXISTS userPost (username VARCHAR(255), post VARCHAR(500))";
-//   let result = await queryDB(sql);
-//   sql = `SELECT post, username FROM userPost`;
-//   result = await queryDB(sql);
-//   result = Object.assign({}, result);
-//   console.log(result);
-//   res.json(result);
-// });
+app.get("/readPost", async (req, res) => {
+  // สร้างตารางถ้ายังไม่มี
+  let createTableSQL =
+  "CREATE TABLE IF NOT EXISTS userpost (id INT AUTO_INCREMENT PRIMARY KEY, reg_date TIMESTAMP, post VARCHAR(255), username VARCHAR(255))";
+  await queryDB(createTableSQL);
 
-//ทำให้สมบูรณ์
+  // ดึงข้อมูลโพสต์จากฐานข้อมูล โดยแยกตาม username
+  let username = req.query.username; // รับค่า username จาก query string
+  let selectPostSQL = `SELECT post, username FROM userPost`;
+
+  // เพิ่ม WHERE เพื่อกรองข้อมูลตาม username (ถ้ามีการระบุ)
+  if (username) {
+    selectPostSQL += ` WHERE username = '${username}'`;
+  }
+
+  try {
+    let result = await queryDB(selectPostSQL);
+
+    // แปลงผลลัพธ์เป็น Object และส่งกลับเป็น JSON
+    result = Object.assign({}, result);
+    res.json(result);
+  } catch (error) {
+    console.error('Error reading posts:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// เขียนข้อมูลโพสต์ลงในฐานข้อมูล
 // app.post("/writePost", async (req, res) => {
 //     let sql =
 //     "CREATE TABLE IF NOT EXISTS userPost (username VARCHAR(255), post VARCHAR(500))";
 //   let result = await queryDB(sql);
 //   sql = `INSERT INTO userPost (username,post) VALUES ("${req.body.user}", "${req.body.message}")`;
 //   result = await queryDB(sql);
-//   res.redirect("feed.html");
+//   res.redirect("profile.html");
 // });
+app.post('/writePost', async (req, res) => {
+  try {
+      // 1. ตรวจสอบและสร้างตาราง
+      let sql = "CREATE TABLE IF NOT EXISTS userPost (username VARCHAR(255), post VARCHAR(500))";
+      await queryDB(sql);
 
-//Register
-app.post("/checkLogin", async (req, res) => {
-    let sql = `SELECT username, img, password FROM userInfo`;
-    let result = await queryDB(sql);
-    result = Object.assign({},result);
-     var keys = Object.keys(result);
-    var IsCorrect = false;
-    for (var numberOfKeys = 0; numberOfKeys < keys.length; numberOfKeys++) {
-    if (
-      req.body.username == result[keys[numberOfKeys]].username &&
-      req.body.password == result[keys[numberOfKeys]].password
-    ) {
-      console.log("login successful");
-      res.cookie("username", result[keys[numberOfKeys]].username);
-      res.cookie("img", result[keys[numberOfKeys]].img);
-      IsCorrect = true;
-      return res.redirect("feed.html");
-    }
+      // 2. ดึงข้อมูลจาก body
+      const { user, message } = req.body;
+
+      // 3. เขียนโพสต์ลงในฐานข้อมูล
+      sql = `INSERT INTO userPost (username, post) VALUES ("${user}", "${message}")`;
+      await queryDB(sql);
+
+      // 4. สิ้นสุดการทำงาน
+      res.end();
+  } catch (error) {
+      console.error('Error writing post to database:', error);
+      // 5. จัดการข้อผิดพลาดและส่งคำตอบแบบ JSON
+      res.status(500).json({ error: 'Internal Server Error' });
   }
-  if (IsCorrect == false) {
-    IsCorrect = false;
-    console.log("login failed");
-    return res.redirect("login.html?error=1");
-  }
-  // ถ้าเช็คแล้ว username และ password ถูกต้อง
-  // return res.redirect('feed.html');
-  // ถ้าเช็คแล้ว username และ password ไม่ถูกต้อง
-  // return res.redirect('login.html?error=1')
 });
 
+
+//Register
+app.post('/checkLogin',async (req,res) => {
+  // ถ้าเช็คแล้ว username และ password ถูกต้อง
+  // return res.redirect('profile.html');
+  // ถ้าเช็คแล้ว username และ password ไม่ถูกต้อง
+  // return res.redirect('login.html?error=1')
+  const { username, password } = req.body;
+
+  const sql = `SELECT * FROM userInfo WHERE username = "${username}"`;
+
+  try {
+      const result = await queryDB(sql);
+      const user = result[0];
+
+      if (user && user.password === password) {
+          // ถ้าชื่อผู้ใช้และรหัสผ่านถูกต้อง
+          res.cookie('username', username);
+          res.cookie('img',user.img)
+          return res.redirect('profile.html');
+      } else {
+          // ถ้าชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง
+          return res.redirect('login.html?error=1');
+      }
+  } catch (error) {
+      console.error('เกิดข้อผิดพลาดในการดึงข้อมูลผู้ใช้:', error);
+      return res.redirect('login.html?error=1');
+  }
+  
+})
+
 app.listen(port, hostname, () => {
-  console.log(`Server running at   http://${hostname}:${port}/register.html`);
+  console.log(`Server running at   http://${hostname}:${port}/main.html`);
 });

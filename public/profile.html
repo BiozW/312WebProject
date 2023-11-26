@@ -3,14 +3,16 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Login</title>
-		<link type="text/css" rel="stylesheet" href="css/stylefeed.css">
-		<script type="text/javascript" src="js/feed.js"></script>
+		<link type="text/css" rel="stylesheet" href="css/styleprofile.css">
+		<script type="text/javascript" src="js/profile.js"></script>
 	</head>
 	<body>
 		<div class="grid-container">
 
 			<div class="item1">
 				
+				Hello <span id="username"></span>, Welcome back!
+
 				<div id="browsePic">
 					<div id="displayPic">
 						<img src= "img/avatar.png" alt="img/avatar.png">
@@ -20,10 +22,21 @@
 					</form>
 				</div>
 				
-				Hello <span id="username"></span>, Welcome back!
+				
 			</div>
-			
-  			<div class="item2"> <a href="/logout"> Logout</a> </div>
+			<div class="item2"> 
+				<button id="button"onclick="window.location.href='profile.html'">Edit</button>
+				<br>
+				<button id="button"onclick="window.location.href='joblist.html'">Saved Job</button>
+				<br>
+				<button id="button"onclick="window.location.href='/logout'">Logout</button>
+				<!-- <a href="/logout"> Edit </a>
+				<br>
+				<a href="/logout"> Saved Job</a>
+				<br>
+				<a href="/logout"> Logout</a>  -->
+			</div>
+  			
   			<div class="item3">
   				<div id="posting">
   					<textarea name="msg" id="textmsg" value="" placeholder="" rows="4" cols="50"></textarea>

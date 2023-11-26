@@ -40,6 +40,12 @@ textarea{
 	font-size: 20px;
 }
 
+#button{
+	width:20%;
+	min-width: 100px;
+	font-size: 20px;
+}
+
 hr {
    /* display: block;*/
     height: 1px;
