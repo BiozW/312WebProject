@@ -1,0 +1,211 @@
+body {
+    font-family: Kodchasan;
+    background-color: #17171B;
+}
+nav {
+    overflow: hidden;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#nav-logo {
+    grid-column: 2 / span 2;
+    text-align: left;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+#nav-logo a {
+    text-decoration: none;
+    color: #FFF;
+}
+
+#judjud {
+    color: #FF9141;
+}
+
+.main-container {
+    padding-top: 100px;
+    display: grid;
+	grid-template-columns:  auto 20% 20% auto ;
+	grid-gap: 15px;
+}
+
+.main-container > div{
+	text-align: center;
+}
+
+#login-head {
+    grid-column: 2 / span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #D9D9D9;
+    text-align: center;
+    font-family: Inter;
+    font-size: 5vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#signup-head {
+    grid-column: 2 / span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #D9D9D9;
+    text-align: center;
+    font-family: Inter;
+    font-size: 5vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#userbox {
+    grid-column: 2 / span 2;
+    margin-top: 30px;
+    padding-right: 60px;
+}
+
+#userbox input {
+    display: flex;
+    width: 100%;
+    height: 45px;
+    background-color: #17171B;
+    border: 1px solid #FFF;
+    border-radius: 50px;
+    text-align: left;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 24px;
+    color: #FFF;
+}
+
+#emailbox {
+    grid-column: 2 / span 2;
+    padding-right: 60px;
+    margin-top: 30px;
+}
+
+#emailbox input {
+    display: flex;
+    width: 100%;
+    height: 45px;
+    background-color: #17171B;
+    border: 1px solid #FFF;
+    border-radius: 50px;
+    text-align: left;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 24px;
+    color: #FFF;
+}
+
+#passwordbox {
+    grid-column: 2 / span 2;
+    padding-right: 60px;
+    margin-top: 30px;
+}
+
+#passwordbox input {
+    display: flex;
+    width: 100%;
+    height: 45px;
+    background-color: #17171B;
+    border: 1px solid #FFF;
+    border-radius: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: left;
+    font-size: 24px;
+    color: #FFF;
+}
+
+#confirmpasswordbox {
+    grid-column: 2 / span 2;
+    padding-right: 60px;
+}
+
+#confirmpasswordbox input {
+    display: flex;
+    width: 100%;
+    height: 45px;
+    background-color: #17171B;
+    border: 1px solid #FFF;
+    border-radius: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: left;
+    font-size: 24px;
+    color: #FFF;
+}
+
+#signupbox {
+    grid-column: 2 / span 2;
+    margin-top: 60px;
+    
+}
+
+#signupbox button{
+    width: 40%;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid #d9d9d9;
+    background: #d9d9d9;
+    color: #1E1E1E;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#forgotpassbox {
+    grid-column: 2 / span 2;
+    text-align: left;
+}
+
+#forgotpassbox span {
+    color: #767676;
+    padding-left: 30px;
+    font-size: 16px;
+    font-style: normal;
+}
+
+#createacountbox {
+    grid-column: 2 / span 1;
+    margin-top: 60px;
+}
+
+#createacountbox button{
+    text-align: left;
+    width: 100%;
+    height: 40px;
+    border-radius: 50px;
+    border: 1px solid #d9d9d900;
+    background: #d9d9d900;
+    color: #FFF;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#loginbox {
+    grid-column: 3 / span 1;
+    margin-top: 60px;
+    
+}
+
+#loginbox button{
+    width: 100%;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid #d9d9d9;
+    background: #d9d9d9;
+    color: #1E1E1E;
+    font-size: 24px;
+    cursor: pointer;
+}

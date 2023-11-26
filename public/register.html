@@ -3,11 +3,39 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Register</title>
-		<link type="text/css" rel="stylesheet" href="css/style.css">
+		<link type="text/css" rel="stylesheet" href="css/registor.css">
 		<script type="text/javascript" src="js/login.js"></script>
 	</head>
 	<body>
-		<div id=container>
+		<nav class="nav-container">
+			<div id="nav-logo" >
+				<a href="/public/index.html">
+					<span>Fare <span id="judjud">:</span>D
+				</span>
+				</a>
+			</div>
+		</nav>
+		<main class="main-container">
+			<div id="signup-head">
+				<span>Create Account</span>
+			</div>
+			<div id="userbox">
+				<input type="text" value="" name="username" placeholder="Username">
+			</div>
+			<div id="emailbox">
+				<input type="text" value="" name="email" placeholder="Email">
+			</div>
+			<div id="passwordbox">
+				<input type="text" value="" name="password" placeholder="Password">
+			</div>
+			<div id="confirmpasswordbox">
+				<input type="text" value="" name="confirmpassword" placeholder="Confirm Password">
+			</div>
+			<div id="signupbox">
+				<button >Sign Up</button>
+			</div>
+		</main>
+		<!-- <div id=container>
 			<form class="form" action="/regisDB" method="post" accept-charset="utf-8">
 				<fieldset>
 					<legend> Register </legend>
@@ -20,7 +48,7 @@
 				</fieldset>
 			</form>
 			
-		</div>
+		</div> -->
 	
 	</body>
 </html>

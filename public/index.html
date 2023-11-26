@@ -4,21 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='css/main.css'>
+    <link rel="icon" href="/images/Icon.png" type="image/F-icon">
 
     <title>Fare :D</title>
 </head>
-    <nav class="topnav">
-        <nav class="navigator">
-            <a href="index.html" class="item">Explore</a>
-            <a href="register.html" class= "item">Register/Login</a>
-            <img src="icon.png" id="Portrait">
-        </nav>
-    </nav>
-    <!-- PLACEHOLDER FOR LOGO -->
-    <h1>Fare :D</h1>
+
+<!-- PLACEHOLDER FOR LOGO -->
 <body>
-    <input type="text" value="" placeholder="Find jobs" ><br>
-    <button>All</button> <button>Location</button><br>
-    <button>Find Jobs</button>
+    <nav class="nav-container">
+        <div id="nav-main">
+            <a href="joblist.html" >Explore</a>
+            <a href="login.html" >Login</a>
+            <img id="Portrait" src="/images/userbaseicon.png" >    
+        </div>
+    </nav>
+    <br>
+    <main class="main-container">
+        <div id="logo">
+            <span>Fare <span id="judjud">:</span>D
+            </span>
+        </div>
+        <div id="findjobbox">
+            <input type="text" value="" placeholder="Find jobs" >
+        </div>
+        <div id="category">
+            <select name="category-job" id="category-job">
+                <option value="0">All</option>
+                <option value="1">Delivery</option>
+                <option value="2">Part Time</option>
+                <option value="3">Full Time</option>
+            </select>
+        </div>
+        <div id="location">
+            <select name="location-job" id="location-job">
+                <option value="0">Location</option>                
+                <option value="1">Bangkok</option>                
+                <option value="2">Chanthaburi</option>                
+            </select>
+        </div> 
+        <div id="findbtn">
+            <button>Find Jobs</button>
+        </div>
+    </main>
+    <footer>
+        <span>Copyright ©2023 Fare-D Studio. All rights reserved.</span>
+    </footer>
 </body>
 </html>
