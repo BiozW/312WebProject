@@ -1,0 +1,226 @@
+body {
+    font-family: Kodchasan;
+    background-color: #17171B;
+}
+
+nav {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#nav-main a {
+    top: 50%;
+    bottom: 50%;
+    text-align: center;
+    height: 100%;
+    color: #FFF;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 16px;
+    font-style: normal;
+    text-decoration: none;
+
+}
+
+.nav-container {
+    display: grid;
+	grid-template-columns:  30% auto 30% ;
+	grid-gap: 20px;
+}
+
+#nav-logo {
+    grid-column: 1 / span 1;
+    text-align: left;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+#nav-logo a {
+    text-decoration: none;
+    color: #FFF;
+}
+
+#judjud {
+    color: #FF9141;
+}
+
+.nav-search-container {
+    display: grid;
+	grid-template-columns: 40% 40% auto  ;
+	grid-gap: 10px;
+}
+
+#findjobbox {
+    grid-column: 1 / span 2;
+    flex-shrink: 0;
+    padding-right: 25px;
+}
+
+#findjobbox input {
+    background-image: url(/images/searchicon.png);
+    background-repeat: no-repeat;
+    background-position: 12px;
+    background-size: 12px;
+    background-color: #17171B;
+    width: 100%;
+    border-radius: 50px;
+    border: 1px solid #FFF;
+    color: #FF9141;
+    font-size: 16px;
+    padding-left: 25px;
+    height: 40px;
+}
+
+#seacrhbtn {
+    grid-column: 3 / span 1;
+}
+
+#seacrhbtn button {
+    width: 100%;
+    border-radius: 50px;
+    border: 1px solid #FFF;
+    background: #D9D9D9;
+    font-size: 10px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#categorybox {
+    grid-column: 1 / span 1;
+}
+
+#categorybox select {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    background-color: #17171B;
+    border: 1px solid #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 20px;
+    color: #FFF;
+}
+
+#locationbox {
+    grid-column: 2 / span 1;
+}
+
+#locationbox select {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    background-color: #17171B;
+    border: 1px solid #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 20px;
+    color: #FFF;
+}
+
+#resetbtn {
+    grid-column: 3 / span 1;
+}
+
+#resetbtn button {
+    width: 100%;
+    border-radius: 50px;
+    border: 1px solid #D9D9D9;
+    background: #D9D9D9;
+    font-size: 10px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#nav-main {
+    text-align: right;
+}
+
+#Portrait {
+    width: 50px;
+    background-color: #FFF;
+    border-radius: 50%;
+    
+}
+
+.main-container {
+    margin-top: 100px;
+    display: grid;
+	grid-template-columns: 30% auto 30%  ;
+	grid-gap: 20px;
+}
+
+.main-container > div {
+    border: 1px solid #FFF;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.10);
+    height: 230px;
+}
+
+.joblist {
+    grid-column: 2 / span 1;
+    display: grid;
+	grid-template-columns: 30% auto 30%  ;
+}
+
+#job-img {
+    grid-column: 1 / span 1;
+    margin: 20px 0 20px 20px;
+    width: 180px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+}
+
+#job-shortdetail {
+    grid-column: 2 / span 1;
+    margin: 20px 0 20px 0 ;
+    width: auto;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background-color: #D9D9D9;
+}
+
+#seemore-btn {
+    grid-column: 3 / span 1;
+    margin: 20px;
+    text-align: right;
+}
+
+#seemore-btn button {
+    width: auto;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    border: 1px solid #D9D9D9;
+    color: #D9D9D9;
+    background: rgb(50, 50, 50) 20% / cover no-repeat;
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+footer {
+    display: flex;
+    position: relative;
+    bottom: 0%;
+    width: 100%;
+    height: 50px;
+    flex-direction: column;
+    justify-content: center;
+    color: #D9D9D9;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    line-height: normal;
+}

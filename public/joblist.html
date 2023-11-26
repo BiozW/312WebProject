@@ -3,9 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="/images/Icon.png" type="image/F-icon">
+    <link rel="stylesheet" href="css/joblist.css">
+    <title>Fare :D | Explore</title>
 </head>
 <body>
+    <nav class="nav-container">
+        <div id="nav-logo" >
+            <a href="/public/index.html">
+                <span>Fare <span id="judjud">:</span>D
+            </span>
+            </a>
+        </div>
+        <div class="nav-search-container">
+            <div id="findjobbox">
+                <input type="text" value="" placeholder="What job are you interested?" >
+            </div>
+            <div id="seacrhbtn">
+                <button>Search</button>
+            </div>
+            <div id="categorybox">
+                <select name="category-job" id="category-job">
+                    <option value="0">All</option>
+                    <option value="1">Delivery</option>
+                    <option value="2">Part Time</option>
+                    <option value="3">Full Time</option>
+                </select>
+            </div>
+            <div id="locationbox">
+                <select name="location-job" id="location-job">
+                    <option value="0">Location</option>                
+                    <option value="1">Bangkok</option>                
+                    <option value="2">Chanthaburi</option>                
+                </select>
+            </div> 
+            <div id="resetbtn">
+                <button>Reset</button>
+            </div>
+        </div>
+        <div id="nav-main">
+            <a href="joblist.html" >Explore</a>
+            <a href="login.html" >Login</a>
+            <a href="profile.html">
+                <img id="Portrait" src="/images/userbaseicon.png" >
+            </a>    
+        </div>
+    </nav>
+    <main class="main-container">
+        <div class="joblist">
+            <div id="job-img">
+            </div>
+            <div id="job-shortdetail">
+                <div id="job-name">
+
+                </div>
+                <div id="job-shorttext">
     
+                </div>
+                <div id="job-company">
+    
+                </div>
+                <div id="job-location">
+    
+                </div>
+            </div>
+            <div id="seemore-btn">
+                <button>See More</button>
+            </div>
+        </div>
+        <div class="joblist"></div>
+        <div class="joblist"></div>
+        <div class="joblist"></div>
+        <div class="joblist"></div>
+        <div class="joblist"></div>
+        <div class="joblist"></div>
+        <div class="joblist"></div>
+        <div class="joblist"></div>
+        <div class="joblist"></div>
+    </main>
+    <footer>
+        <span>Copyright ©2023 Fare-D Studio. All rights reserved.</span>
+    </footer>
 </body>
 </html>
