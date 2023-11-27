@@ -74,7 +74,7 @@ app.post("/regisDB", async (req, res) => {
   return res.redirect("login.html");
 });
 
-//PROFIRE
+//PROFILE
 app.post("/profilepic", async (req, res) => {
   let upload = multer({ storage: storage, fileFilter: imageFilter }).single(
     "avatar"
@@ -146,7 +146,7 @@ app.post("/checkLogin", async (req, res) => {
       res.cookie("username", result[keys[numberOfKeys]].username);
       res.cookie("img", result[keys[numberOfKeys]].img);
       IsCorrect = true;
-      return res.redirect("feed.html");
+      return res.redirect("index.html");
     }
   }
   if (IsCorrect == false) {
@@ -161,5 +161,5 @@ app.post("/checkLogin", async (req, res) => {
 });
 
 app.listen(port, hostname, () => {
-  console.log(`Server running at   http://${hostname}:${port}/register.html`);
+  console.log(`Server running at   http://${hostname}:${port}/index.html`);
 });
