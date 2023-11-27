@@ -160,6 +160,13 @@ app.post("/checkLogin", async (req, res) => {
   // return res.redirect('login.html?error=1')
 });
 
+app.post("savejob",async (req,res) =>{
+  if(sdsddsd){
+    let sql="";
+  }
+
+})
+
 app.listen(port, hostname, () => {
   console.log(`Server running at   http://${hostname}:${port}/index.html`);
 });

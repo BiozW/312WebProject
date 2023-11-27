@@ -1,27 +1,27 @@
 {
     "id1":{
         "jobName": "Delivery to Geothemal Power Plant", 
-        "jobImage": "", 
+        "jobImage": "geothemal.png", 
         "jobShortText": "ส่งของไปยังโรงผลิตไฟฟ้าใต้พิภพ",
         "jobLongText":"98rewguyrehgurehguierhguiergyioetrjtiop",
         "jobCompany":"BL.co",
-        "jobLocation": "KrungLnw"
+        "jobLocation": "Bangkok"
         },
     "id2": {
-        "jobName": "Another Job Name",
+        "jobName": "Long Delivery from Chanthaburi",
         "jobImage": "",
-        "jobShortText": "Short description for another job",
-        "jobLongText": "Long description for another job",
+        "jobShortText": "รับองสดจากจังหวัดจันทบุรี",
+        "jobLongText": "รับผลไม้ทางการเกษตรที่จะนำมาวางโชว์ในกิจกรรมเร็วๆนี้",
         "jobCompany": "XYZ Corp",
-        "jobLocation": "City XYZ"
+        "jobLocation": "Chanthaburi"
         },
     "id3":{
         "jobName": "Delivery to Commecial Zones", 
-        "jobImage": "", 
+        "jobImage": "commecial.png", 
         "jobShortText": "ส่งของไปยังโรงผลิตไฟฟ้าใต้พิภพ",
-        "jobLongText":"98rewguyrehgurehguierhguiergyioetrjtiop",
-        "jobCompany":"BL.co",
-        "jobLocation": "KrungLnw"
+        "jobLongText":"ส่งสินค้าแฟชั่นสุดมหัศจรรย์ว์ย์ไปยังร้านค้าที่ถนนทองบุรี เขตบางบู้ว",
+        "jobCompany":"Monject.co",
+        "jobLocation": "Bangkok"
         }
         
 

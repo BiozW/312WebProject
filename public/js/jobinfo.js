@@ -20,6 +20,7 @@ function fetchData(callback) {
 function showJobDetails(data, jobId) {
     var jobNameContainer = document.getElementById("job-name");
     var jobShortTextContainer = document.getElementById("job-shorttext");
+    var jobLongTextContainer = document.getElementById("job-longtext");
     var jobCompanyContainer = document.getElementById("job-company");
     var jobLocationContainer = document.getElementById("job-location");
 
