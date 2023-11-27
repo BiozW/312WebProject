@@ -2,12 +2,64 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Login</title>
-		<link type="text/css" rel="stylesheet" href="css/style.css">
+		<title>Fare :D | Login</title>
+		<link type="text/css" rel="stylesheet" href="css/registor.css">
+		<link rel="icon" href="/images/Icon.png" type="image/F-icon">
 		<script type="text/javascript" src="js/login.js"></script>
 	</head>
 	<body>
-		<div id=container>
+		<nav class="nav-container">
+			<div id="nav-logo" >
+				<a href="/public/index.html">
+					<span>Fare <span id="judjud">:</span>D
+				</span>
+				</a>
+			</div>
+		</nav>
+		<main class="main-container">
+			<div id="login-head">
+				<span>Sign In</span>
+			</div>
+			<div id="userbox">
+				<input type="text" value="" name="username" placeholder="Username">
+			</div>
+			<div id="passwordbox">
+				<input type="text" value="" name="password" placeholder="Password">
+			</div>
+			<div id="forgotpassbox">
+				<span>Forgot your password?</span>
+			</div>
+			<div id="createacountbox">
+				<button onclick="goToRegister()">Create Account</button>
+			</div>
+			<div id="loginbox">
+				<button >Login</button>
+			</div>
+		</main>
+		<!-- <main >
+			<form class="main-container" action="/checkLogin" method="post" accept-charset="utf-8">
+				<div id="login-head">
+					<span>Sign In</span>
+				</div>
+				<div id="userbox">
+					<input type="text" value="" name="username" placeholder="Username">
+				</div>
+				<div id="passwordbox">
+					<input type="text" value="" name="password" placeholder="Password">
+				</div>
+				<div id="forgotpassbox">
+					<span>Forgot your password?</span>
+				</div>
+				<div id="createacountbox">
+					<button onclick="goToRegister()">Create Account</button>
+				</div>
+				<div id="loginbox">
+					<button >Login</button>
+				</div>
+			</form>
+			
+		</main> -->
+		<!-- <div id=container>
 			<form class="form" action="/checkLogin" method="post" accept-charset="utf-8">
 				<fieldset>
 					<legend> Login </legend>
@@ -19,7 +71,7 @@
 				</fieldset>
 			</form>
 			
-		</div>
+		</div> -->
 	
 	</body>
 </html>

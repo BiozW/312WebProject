@@ -1,56 +1,99 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Login</title>
-		<link type="text/css" rel="stylesheet" href="css/styleprofile.css">
-		<script type="text/javascript" src="js/profile.js"></script>
-	</head>
-	<body>
-		<div class="grid-container">
-
-			<div class="item1">
-				
-				Hello <span id="username"></span>, Welcome back!
-
-				<div id="browsePic">
-					<div id="displayPic">
-						<img src= "img/avatar.png" alt="img/avatar.png">
-					</div>
-					<form action="/profilepic" method="post" id="formId" enctype="multipart/form-data">
-						<input type="file" id="fileField" name="avatar" value="fileToUpload" placeholder="" hidden>
-					</form>
-				</div>
-				
-				
-			</div>
-			<div class="item2"> 
-				<button id="button"onclick="window.location.href='profile.html'">Edit</button>
-				<br>
-				<button id="button"onclick="window.location.href='joblist.html'">Saved Job</button>
-				<br>
-				<button id="button"onclick="window.location.href='/logout'">Logout</button>
-				<!-- <a href="/logout"> Edit </a>
-				<br>
-				<a href="/logout"> Saved Job</a>
-				<br>
-				<a href="/logout"> Logout</a>  -->
-			</div>
-  			
-  			<div class="item3">
-  				<div id="posting">
-  					<textarea name="msg" id="textmsg" value="" placeholder="" rows="4" cols="50"></textarea>
-					<br>
-  					<button id="postbutton">Post</button>
-  				</div>
-  				<hr>
-  				<div id="feed-container">
-  					
-  				</div>
-  				
-  			</div>  
-		</div>
-	
-	</body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="icon" href="/images/Icon.png" type="image/F-icon">
+    <title>Fare :D | Profile</title>
+</head>
+<body>
+    <nav class="nav-container">
+        <div id="nav-logo" >
+            <a href="/public/index.html">
+                <span>Fare <span id="judjud">:</span>D
+            </span>
+            </a>
+        </div>
+        <div id="nav-main">
+            <a href="joblist.html" >Explore</a>
+            <a href="login.html" >Login</a>
+            <a href="profile.html">
+                <img id="Portrait" src="/images/userbaseicon.png" >
+            </a>    
+        </div>
+    </nav>
+    <main class="main-container">
+        <div id="profileleftheadbox">
+            <h1 id="profile-name">
+                HARIT
+            </h1>
+            <h2 id="profile-fullname">
+                Harit Tojumlearn
+            </h2>
+            <h3 id="profile-company">
+                Paradox Interactive .co
+            </h3>
+            <h3 id="location">
+                Thailand
+            </h3>
+            <h4 id="profile-call">
+                Call No.
+                <span id="profile-callnumber">
+                    0999999999
+                </span>
+            </h4>
+            
+        </div>
+        <div id="profilerightheadbox">
+            <div id="profile-portait">
+                <img src="/images/userbaseicon.png" >    
+            </div>
+            <div>
+                <button>
+                    EDIT
+                </button>
+            </div>
+            <div>
+                <button onclick="window.location.href = 'recordwork.html'">
+                    Saved Jobs
+                </button>
+            </div>
+            <div>
+                <button>
+                    Log Out
+                </button>
+            </div>
+        </div>
+        <div id="profiledetail">
+            <div id="aboutbox">
+                <h2>About</h2>
+                <div>
+                    <span id="aboutdetail"></span>
+                </div>
+            </div>
+            <div id="skillsbox">
+                <h2>Skills</h2>
+                <div>
+                    <span id="skilldetail"></span>
+                </div>
+            </div>
+            <div id="activitybox">
+                <h2>Activity</h2>
+                <div>
+                    <span id="activitydetail"></span>
+                </div>
+            </div>
+            <div id="educationbox">
+                <h2>Education</h2>
+                <div>
+                    <span id="educationdetail"></span>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <span>Copyright ©2023 Fare-D Studio. All rights reserved.</span>
+    </footer>
+</body>
 </html>
-
