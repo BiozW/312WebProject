@@ -75,25 +75,31 @@ app.post("/regisDB", async (req, res) => {
 });
 
 //PROFILE
-app.post("/profilepic", async (req, res) => {
-  let upload = multer({ storage: storage, fileFilter: imageFilter }).single(
-    "avatar"
-  );
-  upload(req, res, (err) => {
-    if (req.fileValidationError) {
-      return res.send(req.fileValidationError);
-    } else if (!req.file) {
-      return res.send("Please select an image to upload");
-    } else if (err instanceof multer.MulterError) {
-      return res.send(err);
-    } else if (err) {
-      return res.send(err);
-    }
-    updateImg(req.cookies.username, req.file.filename);
-    res.cookie("img", req.file.filename);
-    return res.redirect("feed.html");
+app.post('/profilepic', (req,res) => {
+  let upload = multer({ storage: storage, fileFilter: imageFilter }).single('avatar');
+
+  upload(req, res, async (err) => {
+      if (req.fileValidationError) {
+          return res.send(req.fileValidationError);
+      }
+      else if (!req.file) {
+          return res.send('Choose an image to upload');
+      }
+      else if (err instanceof multer.MulterError) {
+          return res.send(err);
+      }
+      else if (err) {
+          return res.send(err);
+      }
+      console.log('Uploaded image filename: '+ req.file.filename);
+
+      const img_file = req.file.filename;
+      const user_username = req.cookies["username"];
+      await res.cookie("img",img_file)
+      await updateImg(user_username,img_file);
+      return res.redirect('feed.html')
   });
-});
+})
 
 const updateImg = async (username, filen) => {
   let sql = `UPDATE userInfo SET img = '${filen}' WHERE username = '${username}'`;

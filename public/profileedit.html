@@ -28,8 +28,13 @@
             <h1>EDIT</h1>
         </div>
         <div id="profiletopheadbox">
-            <div id="profile-portait">
-                <img src="/images/userbaseicon.png" >    
+            <div id="browsePic">
+                <div id="displayPic">
+                    <img src= "img/avatar.png" alt="img/avatar.png">
+                </div>
+                <form action="/profilepic" method="post" id="formId" enctype="multipart/form-data">
+                    <input type="file" id="fileField" name="avatar" value="fileToUpload" placeholder="" hidden>
+                </form>
             </div>
             <button id="uploadpic">Upload</button>
             <br>
