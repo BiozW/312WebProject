@@ -160,12 +160,35 @@ app.post("/checkLogin", async (req, res) => {
   // return res.redirect('login.html?error=1')
 });
 
-app.post("savejob",async (req,res) =>{
-  if(sdsddsd){
-    let sql="";
-  }
+const createSavedJobTable = async () => {
+  let sql =
+    "CREATE TABLE IF NOT EXISTS savedjob (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255), savedjobId VARCHAR(255))";
+  let result = await queryDB(sql);
+  console.log("SavedJob table created");
+};
 
-})
+createSavedJobTable(); // Call the function to create the table when the server starts
+
+// Endpoint to save a job
+app.post("/savejob", async (req, res) => {
+  const username = req.cookies.username;
+  const savedjobId = req.body.savedjobId;
+
+  // Check if the job is already saved
+  let sql = `SELECT * FROM savedjob WHERE username='${username}' AND savedjobId='${savedjobId}'`;
+  let result = await queryDB(sql);
+
+  if (result.length > 0) {
+    console.log("Job already saved");
+    res.json({ success: false, message: "Job already saved" });
+  } else {
+    // Save the job
+    sql = `INSERT INTO savedjob (username, savedjobId) VALUES ('${username}', '${savedjobId}')`;
+    result = await queryDB(sql);
+    console.log("Job saved successfully");
+    res.json({ success: true, message: "Job saved successfully" });
+  }
+});
 
 app.listen(port, hostname, () => {
   console.log(`Server running at   http://${hostname}:${port}/index.html`);

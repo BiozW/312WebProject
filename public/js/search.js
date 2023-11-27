@@ -55,7 +55,7 @@ function Searchdata() {
                 return result;
             }, {});
   
-        showData(searchResult);
+        createJobListings(searchResult);
     });
 }
 // Function to navigate to jobinfo.html with the specific job ID

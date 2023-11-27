@@ -52,7 +52,25 @@ window.onload = function () {
         console.error("Job ID not specified in the URL");
     }
 };
-
+function saveJob() {
+    var jobId = getJobIdFromUrl();
+    
+    // Make an AJAX request to save the job
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/savejob");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            var response = JSON.parse(xhr.responseText);
+            if (response.success) {
+                alert("Job saved successfully!");
+            } else {
+                alert("Job already saved!");
+            }
+        }
+    };
+    xhr.send(JSON.stringify({ savedjobId: jobId }));
+}
 // Function to get the job ID from the URL
 function getJobIdFromUrl() {
     var urlParams = new URLSearchParams(window.location.search);
