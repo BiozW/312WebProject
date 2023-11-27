@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/profileedit.css">
+    <script type="text/javascript" src="js/profileedit.js"></script>
     <link rel="icon" href="/images/Icon.png" type="image/F-icon">
     <title>Fare :D | Profile Edit</title>
 </head>
 <body>
+    
     <nav class="nav-container">
         <div id="nav-logo" >
             <a href="/index.html">
@@ -17,9 +19,9 @@
         </div>
         <div id="nav-main">
             <a href="joblist.html" >Explore</a>
-            <a href="login.html" >Login</a>
+            <!-- <a href="login.html" >Login</a> -->
             <a href="profile.html">
-                <img id="Portrait" src="/images/userbaseicon.png" >
+                Profile
             </a>    
         </div>
     </nav>
@@ -30,13 +32,15 @@
         <div id="profiletopheadbox">
             <div id="browsePic">
                 <div id="displayPic">
-                    <img src= "img/avatar.png" alt="img/avatar.png">
+                    <img  src= "img/avatar.png" alt="img/avatar.png">
                 </div>
+                <button id="uploadpic">Upload</button>
                 <form action="/profilepic" method="post" id="formId" enctype="multipart/form-data">
-                    <input type="file" id="fileField" name="avatar" value="fileToUpload" placeholder="" hidden>
+                    <input type="file" id="fileField" name="avatar" value="fileToUpload" placeholder="Upload" hidden>
                 </form>
+                
             </div>
-            <button id="uploadpic">Upload</button>
+            <!-- 
             <br>
             <input type="text" placeholder="Username">
             <br>
@@ -46,7 +50,7 @@
             <br>
             <input type="text" placeholder="Confirm Password">
             <br>
-            <button id="update-btn">Update</button>
+            <button id="update-btn">Update</button> -->
             
         </div>
         <div id="profileunderheadbox">

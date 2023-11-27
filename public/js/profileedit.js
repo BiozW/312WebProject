@@ -24,12 +24,12 @@ function pageLoad(){
 	document.getElementById('fileField').onchange = fileSubmit;
 	
 	var username = getCookie('username');
-
-	document.getElementById("username").innerHTML = username;
 	console.log(getCookie('img'));
 	showImg('img/'+getCookie('img'));
+    Updatepersonalinfo(username);
 	readPost();
 }
+
 
 function getData(){
 	var msg = document.getElementById("textmsg").value;
@@ -54,102 +54,5 @@ function showImg(filename){
 		temp.src = filename;
 		showpic.appendChild(temp);
 	}
-}
-
-// complete it
-// async function readPost(){
-// 	try {
-//         const response = await fetch("/readPost");
-//         const data = await response.json();
-//         showPost(data);
-//     } catch (error) {
-//         console.error('Error reading posts:', error);
-//     }
-	
-// }
-async function readPost() {
-    try {
-        const response = await fetch("/readPost");
-        const data = await response.json();
-
-        // กรองข้อมูลเฉพาะโพสต์ที่มี username เป็น username ของผู้ใช้
-        const userPosts = Object.keys(data).reduce((filtered, key) => {
-            if (data[key].username === getCookie("username")) {
-                filtered[key] = data[key];
-            }
-            return filtered;
-        }, {});
-
-        showPost(userPosts);
-    } catch (error) {
-        console.error('Error reading posts:', error);
-    }
-}
-
-
-// complete it
-async function writePost(msg){
-	try {
-        const response = await fetch("/writePost", {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                user: getCookie("username"),
-                message: msg
-            })
-        });
-        // อัพเดทหน้าเว็บหลังจากที่ทำการเขียนโพสต์
-        readPost();
-    } catch (error) {
-        console.error('Error writing post:', error);
-    }
-}
-
-// แสดง post ที่อ่านมาได้ ลงในพื้นที่ที่กำหนด
-// function showPost(data){
-// 	var keys = Object.keys(data);
-// 	var divTag = document.getElementById("feed-container");
-// 	divTag.innerHTML = "";
-// 	for (var i = keys.length-1; i >=0 ; i--) {
-
-// 		var temp = document.createElement("div");
-// 		temp.className = "newsfeed";
-// 		divTag.appendChild(temp);
-// 		var temp1 = document.createElement("div");
-// 		temp1.className = "postmsg";
-// 		temp1.innerHTML = data[keys[i]]["post"];
-// 		temp.appendChild(temp1);
-// 		var temp1 = document.createElement("div");
-// 		temp1.className = "postuser";
-		
-// 		// temp1.innerHTML = "Posted by: "+data[keys[i]]["username"];
-// 		// temp.appendChild(temp1);
-		
-// 	}
-// }
-function showPost(data) {
-    var keys = Object.keys(data);
-    var divTag = document.getElementById("feed-container");
-    divTag.innerHTML = "";
-
-    for (var i = keys.length - 1; i >= 0; i--) {
-        var temp = document.createElement("div");
-        temp.className = "newsfeed";
-        divTag.appendChild(temp);
-
-        var temp1 = document.createElement("div");
-        temp1.className = "postmsg";
-        temp1.innerHTML = data[keys[i]].post;
-        temp.appendChild(temp1);
-
-        // เพิ่มข้อมูลเพิ่มเติมที่คุณต้องการแสดง
-        var temp2 = document.createElement("div");
-        temp2.className = "additional-info";
-        // temp2.innerHTML = `Posted by: ${data[keys[i]].username}, Date: ${data[keys[i]].date}`;
-        temp.appendChild(temp2);
-    }
 }
 

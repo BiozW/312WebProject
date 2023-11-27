@@ -163,17 +163,15 @@ nav {
     margin-bottom: 100px;
 }
 
-#forgotpassbox {
+#errordisplay {
     grid-column: 2 / span 2;
     text-align: left;
-}
-
-#forgotpassbox span {
     color: #767676;
     padding-left: 30px;
     font-size: 16px;
     font-style: normal;
 }
+
 
 #createacountbox {
     grid-column: 2 / span 1;
