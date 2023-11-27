@@ -14,70 +14,41 @@ function fetchData(callback) {
         console.error("Error during the XMLHttpRequest");
     };
     xhr.send();
-  }
-  
-  // Function to display data on the page
-  function showData(data) {
-    var layer = document.getElementById("layer");
-    layer.innerHTML = ""; // Clear previous data
-  
-    for (var id in data) {
-        var jobData = data[id];
-  
+}
+
+
+function createJobListings(data) {
+    var mainContainer = document.querySelector(".main-container");
+
+    for (var jobId in data) {
+        var jobData = data[jobId];
+
         var jobContainer = document.createElement("div");
-  
-        var jobName = document.createElement("p");
-        jobName.innerText = "Job: " + jobData.jobName;
-  
-        var contractor = document.createElement("p");
-        contractor.innerText = "Contractor: " + jobData.contractor;
-  
-        var earth = document.createElement("p");
-        earth.innerText = "From: " + jobData.earth;
-  
-        var pay = document.createElement("p");
-        pay.innerText = "Pay: " + jobData.pay;
-  
-        var details = document.createElement("p");
-        details.innerText = "Details: " + jobData.details;
-  
-        // Create a button
-        var detailsButton = document.createElement("button");
-        detailsButton.innerText = "View Details";
-        detailsButton.onclick = function () {
-            // Redirect to jobdetails.html
-            window.location.href = "joblist.html";
-        };
-  
-        jobContainer.appendChild(jobName);
-        jobContainer.appendChild(contractor);
-        jobContainer.appendChild(earth);
-        jobContainer.appendChild(pay);
-        jobContainer.appendChild(details);
-        jobContainer.appendChild(detailsButton); // Append the button
-  
-        layer.appendChild(jobContainer);
+        jobContainer.classList.add("joblist");
+
+        jobContainer.innerHTML = `
+            <div id="job-img"></div>
+            <div id="job-shortdetail">
+                <div id="job-name">${jobData.jobName}</div>
+                <div id="job-shorttext">${jobData.jobShortText}</div>
+                <div id="job-company">${jobData.jobCompany}</div>
+                <div id="job-location">${jobData.jobLocation}</div>
+            </div>
+            <div id="seemore-btn">
+                <button onclick="viewJobDetails('${jobId}')">See More</button>
+            </div>
+        `;
+
+        // Append the job listing div to the main container
+        mainContainer.appendChild(jobContainer);
     }
-  }
-  
-  
-  // Function to filter data based on search input
-  function Searchdata() { // Corrected function name
-    var searchInput = document.getElementById('search').value.toLowerCase();
-  
-    fetchData(function (data) {
-        var searchResult = Object.keys(data)
-            .filter(id => data[id].jobName.toLowerCase().includes(searchInput))
-            .reduce((result, id) => {
-                result[id] = data[id];
-                return result;
-            }, {});
-  
-        showData(searchResult);
-    });
-  }
-  
-  // Initial page load
-  window.onload = function () {
-    fetchData(showData);
-  };
+}
+
+// Function to navigate to jobinfo.html with the specific job ID
+function viewJobDetails(jobId) {
+    window.location.href = `jobinfo.html?id=${jobId}`;
+}
+
+window.onload = function () {
+    fetchData(createJobListings);
+};

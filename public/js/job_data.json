@@ -1,11 +1,28 @@
 {
     "id1":{
-    "jobName": "Test", 
-    "image": "", 
-    "contractor": "eeeee", 
-    "earth":"From : Earth123",
-    "pay":"Pay : 9000", 
-    "details": "Details : ร้านพิซซ่าชื่อดังแห่งดาวน้ำ กำลังมองหาพนักงานส่งพิซซ่าสูตรท้องทะเลชื่อก้อง",
-    "moreDetails": "ร้านพิซซ่าเฟรนซี่แห่งโลก123 อันเป็นโลกที่ประกอบไปด้วยน้ำมากกว่า 80% ต้องการรับสมัครพนักงานขนส่งที่สามารถขับเรือและมีความอดทนในการทำงานใต้น้ำได้เป็นอย่างดี"
+        "jobName": "Delivery to Geothemal Power Plant", 
+        "jobImage": "", 
+        "jobShortText": "ส่งของไปยังโรงผลิตไฟฟ้าใต้พิภพ",
+        "jobLongText":"98rewguyrehgurehguierhguiergyioetrjtiop",
+        "jobCompany":"BL.co",
+        "jobLocation": "KrungLnw"
+        },
+    "id2": {
+        "jobName": "Another Job Name",
+        "jobImage": "",
+        "jobShortText": "Short description for another job",
+        "jobLongText": "Long description for another job",
+        "jobCompany": "XYZ Corp",
+        "jobLocation": "City XYZ"
+        },
+    "id3":{
+        "jobName": "Delivery to Commecial Zones", 
+        "jobImage": "", 
+        "jobShortText": "ส่งของไปยังโรงผลิตไฟฟ้าใต้พิภพ",
+        "jobLongText":"98rewguyrehgurehguierhguiergyioetrjtiop",
+        "jobCompany":"BL.co",
+        "jobLocation": "KrungLnw"
         }
+        
+
 }
