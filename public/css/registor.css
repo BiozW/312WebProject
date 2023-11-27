@@ -34,8 +34,8 @@ nav {
 	grid-gap: 15px;
 }
 
-.main-container > div{
-	text-align: center;
+#signform {
+    grid-column: 2 / span 1;
 }
 
 #login-head {
@@ -150,10 +150,10 @@ nav {
 #signupbox {
     grid-column: 2 / span 2;
     margin-top: 60px;
-    
+    text-align: center;
 }
 
-#signupbox button{
+#signupbox input{
     width: 40%;
     height: 50px;
     border-radius: 50px;
@@ -200,7 +200,7 @@ nav {
     margin-bottom: 100px;
 }
 
-#loginbox button{
+#loginbox input{
     width: 100%;
     height: 50px;
     border-radius: 50px;

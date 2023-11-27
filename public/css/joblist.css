@@ -56,6 +56,14 @@ nav {
 	grid-gap: 10px;
 }
 
+#formjobbox {
+    grid-column: 1 / span 3;
+    display: grid;
+    grid-template-columns: 40% 40% auto  ;
+	grid-gap: 10px;
+
+}
+
 #findjobbox {
     grid-column: 1 / span 2;
     flex-shrink: 0;

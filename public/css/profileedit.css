@@ -181,7 +181,14 @@ nav {
 }
 
 #save-btn button {
-    
+    margin: 30px;
+    background: #FFF;
+    border: 2px solid #FFF;
+    border-radius: 15px;
+    font-size: 24px;
+    width: 40%;
+    height: 40px;
+    color: #17171B;
 }
 
 footer {
