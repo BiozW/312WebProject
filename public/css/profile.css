@@ -94,11 +94,11 @@ nav {
 }
 
 #profile-portait {
-    align-content: center;
-    align-items: center;
-    text-align: center;
-    width: 260px;
-    height: 260px;
+    align-content: right;
+    align-items: right;
+    text-align: right;
+    width: 150px;
+    height: 150px;
     flex-shrink: 0;
     border-radius: 260px;
     background: url(<path-to-image>), lightgray 50% / cover no-repeat;
@@ -108,15 +108,21 @@ nav {
     width: 100%;
     height: 100%;
     border-radius: 260px;
-    justify-content: center;
-    justify-self: center;
-    justify-items: center;
 }
-
-
 
 #profiledetail {
     grid-column: 2 / span 2;
+}
+
+#profiledetail > div > h2 {
+    margin-bottom: 0px;
+}
+
+#profiledetail > div > div{
+    margin-top: 0px;
+    height: 120px;
+    border: 1px solid #FFF;
+    border-radius: 5px;
 }
 
 footer {
