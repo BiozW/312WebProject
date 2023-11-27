@@ -85,13 +85,17 @@ nav {
 #profiletopheadbox {
     grid-column: 2 / span 2;
     text-align: center;
+    
 }
 
 #profiletopheadbox > input {
+    background-color: #17171B;
     margin-bottom: 20px;
-    width: 100%;
+    width: 70%;
     height: 30px;
-    border: 2px solid #FFF;
+    border: 1px solid #FFF;
+    border-radius: 25px;
+    padding-left: 30px;
 }
 
 #uploadpic {
@@ -118,6 +122,8 @@ nav {
     grid-column: 2 / span 2;
     text-align: center;
 }
+
+#profileunderheadbox > 
 
 #profile-portait {
     width: 100%;
