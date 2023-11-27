@@ -71,43 +71,70 @@ nav {
     color: #D9D9D9;
 }
 
-#profileleftheadbox {
-    grid-column: 2 / span 1;
-}
-
-#profilerightheadbox {
-    grid-column: 3 / span 1;
-}
-
-#profilerightheadbox > div > button {
-    margin: 10px;
-    width: 150px;
-    background: #17171B;
-    color: #FFF;
+#edithead {
+    grid-column: 2 / span 2;
     text-align: center;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    border-radius: 5px;
-    border: 1px solid #FFF;
+}
+
+#edithead h1 {
+    background: #FF9141;
+    color: #17171B;
+    border-radius: 10px;
+}
+
+#profiletopheadbox {
+    grid-column: 2 / span 2;
+    text-align: center;
+}
+
+#profiletopheadbox > input {
+    margin-bottom: 20px;
+    width: 100%;
+    height: 30px;
+    border: 2px solid #FFF;
+}
+
+#uploadpic {
+    margin: 30px;
+    background: #17171B;
+    border: 2px solid #FFF;
+    border-radius: 15px;
+    width: 40%;
+    height: 30px;
+    color: #FFF;
+}
+
+#update-btn {
+    margin: 30px;
+    background: #FFF;
+    border: 2px solid #FFF;
+    border-radius: 15px;
+    width: 40%;
+    height: 30px;
+    color: #17171B;
+}
+
+#profileunderheadbox {
+    grid-column: 2 / span 2;
+    text-align: center;
 }
 
 #profile-portait {
-    align-content: right;
-    align-items: right;
-    text-align: right;
-    width: 170px;
+    width: 100%;
     height: 170px;
     flex-shrink: 0;
     border-radius: 260px;
-    background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+    background: url(<path-to-image>), #17171B 0% / cover no-repeat;
 }
 
 #profile-portait img {
-    width: 100%;
+    width: 170px;
     height: 100%;
     border-radius: 260px;
+}
+
+#uploadpic {
+    text-align: center;
 }
 
 #profiledetail {
@@ -118,11 +145,25 @@ nav {
     margin-bottom: 0px;
 }
 
-#profiledetail > div > div{
+#profiledetail > div > div > textarea{
     margin-top: 0px;
+    width: 100%;
     height: 220px;
-    border: 1px solid #FFF;
+    padding: 20px;
+    font-size: 16px;
+    color: #FFF;
+    background: #17171B;
+    border: 2px solid #FFF;
     border-radius: 5px;
+}
+
+#save-btn {
+    grid-column: 2 / span 2;
+    text-align: center;
+}
+
+#save-btn button {
+    
 }
 
 footer {
