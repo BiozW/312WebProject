@@ -44,6 +44,20 @@ function createJobListings(data) {
     }
 }
 
+function Searchdata() {
+    var searchInput = document.getElementById('search').value.toLowerCase();
+  
+    fetchData(function (data) {
+        var searchResult = Object.keys(data)
+            .filter(id => data[id].jobName.toLowerCase().includes(searchInput))
+            .reduce((result, id) => {
+                result[id] = data[id];
+                return result;
+            }, {});
+  
+        showData(searchResult);
+    });
+}
 // Function to navigate to jobinfo.html with the specific job ID
 function viewJobDetails(jobId) {
     window.location.href = `jobinfo.html?id=${jobId}`;

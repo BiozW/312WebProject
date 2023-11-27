@@ -17,39 +17,26 @@
 			</div>
 		</nav>
 		<main class="main-container">
-			<div id="signup-head">
-				<span>Create Account</span>
-			</div>
-			<div id="userbox">
-				<input type="text" value="" name="username" placeholder="Username">
-			</div>
-			<div id="emailbox">
-				<input type="text" value="" name="email" placeholder="Email">
-			</div>
-			<div id="passwordbox">
-				<input type="text" value="" name="password" placeholder="Password">
-			</div>
-			<div id="confirmpasswordbox">
-				<input type="text" value="" name="confirmpassword" placeholder="Confirm Password">
-			</div>
-			<div id="signupbox">
-				<button >Sign Up</button>
-			</div>
-		</main>
-		<!-- <div id=container>
-			<form class="form" action="/regisDB" method="post" accept-charset="utf-8">
-				<fieldset>
-					<legend> Register </legend>
-					Username:<input type="text" name="username" value="" placeholder="" required><br>
-					Email:<input type="text" name="email" value="" placeholder="" required><br>
-					Password: <input type="password" name="password" value="" placeholder=""><br>
-					ConfirmPassword<input type="password" id="confirmPassword" name="confirmPassword" placeholder="" required>
-					<span id="errordisplay"></span><br>
+			<form action="/regisDB" method="post">
+				<div id="signup-head">
+					<span>Create Account</span>
+				</div>
+				<div id="userbox">
+					<input type="text" value="" name="username" placeholder="Username" required>
+				</div>
+				<div id="emailbox">
+					<input type="text" value="" name="email" placeholder="Email" required>
+				</div>
+				<div id="passwordbox">
+					<input type="password" value="" name="password" placeholder="Password" required>
+				</div>
+				<div id="confirmpasswordbox">
+					<input type="password" value="" name="confirmpassword" placeholder="Confirm Password" required>
+				</div>
+				<div id="signupbox">
 					<input type="submit" name="submit" value="Register">
-				</fieldset>
+				</div>
 			</form>
-			
-		</div> -->
-	
+		</main>
 	</body>
 </html>

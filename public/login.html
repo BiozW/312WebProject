@@ -17,24 +17,31 @@
 			</div>
 		</nav>
 		<main class="main-container">
-			<div id="login-head">
-				<span>Sign In</span>
-			</div>
-			<div id="userbox">
-				<input type="text" value="" name="username" placeholder="Username">
-			</div>
-			<div id="passwordbox">
-				<input type="text" value="" name="password" placeholder="Password">
-			</div>
-			<div id="forgotpassbox">
-				<span>Forgot your password?</span>
-			</div>
-			<div id="createacountbox">
-				<button onclick="goToRegister()">Create Account</button>
-			</div>
-			<div id="loginbox">
-				<button >Login</button>
-			</div>
+			<form action="/checkLogin" method="post">
+				<div id="signup-head">
+					<span>Sign In</span>
+				</div>
+				<div id="userbox">
+					<input type="password" value="" name="username" placeholder="Username" required>
+				</div>
+				<!-- <div id="emailbox">
+					<input type="text" value="" name="email" placeholder="Email" required>
+				</div> -->
+				<div id="passwordbox">
+					<input type="text" value="" name="password" placeholder="Password" required>
+				</div>
+				<div id="forgotpassbox">
+					<span>Forgot your password?</span>
+				</div>
+				<span id="errordisplay"></span><br>
+				<div id="createacountbox">
+					<button onclick="goToRegister()">Create Account</button>
+				</div>
+				
+				<div id="loginbox">
+					<input type="submit" name="submit" value="Log in">
+				</div>
+			</form>
 		</main>
 		<!-- <main >
 			<form class="main-container" action="/checkLogin" method="post" accept-charset="utf-8">

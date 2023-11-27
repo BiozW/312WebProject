@@ -17,12 +17,15 @@
             </a>
         </div>
         <div class="nav-search-container">
-            <div id="findjobbox">
-                <input type="text" value="" placeholder="What job are you interested?" >
-            </div>
-            <div id="seacrhbtn">
-                <button>Search</button>
-            </div>
+            <form>
+                <div id="findjobbox">
+                    <input id="search" type="text" value="" placeholder="What job are you interested?" >  
+                </div>
+                <div id="seacrhbtn">
+                    <button onclick="Searchdata()">Search</button>
+                </div>
+            </form>
+            
             <div id="categorybox">
                 <select name="category-job" id="category-job">
                     <option value="0">All</option>

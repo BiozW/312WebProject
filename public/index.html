@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='css/main.css'>
     <link rel="icon" href="/images/Icon.png" type="image/F-icon">
+    <script type="text/javascript" src="js/index.js"></script>
 
     <title>Fare :D</title>
 </head>
@@ -27,7 +28,10 @@
             </span>
         </div>
         <div id="findjobbox">
-            <input type="text" value="" placeholder="Find jobs" >
+            <form>
+                <input type="text" value="" placeholder="Find jobs" >
+            </form>
+            
         </div>
         <div id="category">
             <select name="category-job" id="category-job">
@@ -45,7 +49,7 @@
             </select>
         </div> 
         <div id="findbtn">
-            <button>Find Jobs</button>
+            <button onclick="redirectToJobList()">Find Jobs</button>
         </div>
     </main>
     <footer>
