@@ -104,18 +104,17 @@ async function readPost() {
 	divTag.innerHTML = "";
 	for (var i = keys.length - 1; i >= 0; i--) {
 	  var temp = document.createElement("div");
-	  temp.className = "commented";
+	  temp.className = "newsfeed";
 	  divTag.appendChild(temp);
 	  var temp1 = document.createElement("div");
-	  temp1.className = "commnettext";
+	  temp1.className = "postmsg";
 	  temp1.innerHTML = data[keys[i]]["post"];
 	  temp.appendChild(temp1);
 	  var temp1 = document.createElement("div");
-	  temp1.className = "commnetname";
+	  temp1.className = "postuser";
   
-      temp.appendChild(temp1);
 	  temp1.innerHTML = data[keys[i]]["username"]; 
-	  
+	  temp.appendChild(temp1);
 	}
   }
 // Function to get the job ID from the URL

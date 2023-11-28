@@ -220,7 +220,7 @@ app.post("/writePost", async (req, res) => {
 let result = await queryDB(sql);
 sql = `INSERT INTO userPost (username,post) VALUES ("${req.body.user}", "${req.body.message}")`;
 result = await queryDB(sql);
-res.redirect("jobdetails.html");
+res.redirect("jobinfo.html");
 
 });
 

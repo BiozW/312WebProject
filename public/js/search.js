@@ -42,7 +42,6 @@ function createJobListings(data) {
         mainContainer.appendChild(jobContainer);
     }
 }
-
 function Searchdata() {
 
     var searchInput = document.getElementById('search').value.toLowerCase();
@@ -51,11 +50,10 @@ function Searchdata() {
         var searchResult = Object.keys(data)
             .filter(id => data[id].jobName.toLowerCase().includes(searchInput))
             .reduce((result, id) => {
-                console.log("code reached");
                 result[id] = data[id];
+                alert("path entered");
                 return result;
             },{});
-            console.log("code reached");
         createJobListings(searchResult);
     });
     
