@@ -27,7 +27,7 @@ function createJobListings(data) {
         jobContainer.classList.add("joblist");
 
         jobContainer.innerHTML = `
-            <div id="job-img"></div>
+            <div id="job-img">${jobData.JobImage}</div>
             <div id="job-shortdetail">
                 <div id="job-name">${jobData.jobName}</div>
                 <div id="job-shorttext">${jobData.jobShortText}</div>
@@ -37,26 +37,28 @@ function createJobListings(data) {
             <div id="seemore-btn">
                 <button onclick="viewJobDetails('${jobId}')">See More</button>
             </div>
-        `;
-
+        `
         // Append the job listing div to the main container
         mainContainer.appendChild(jobContainer);
     }
 }
 
 function Searchdata() {
+
     var searchInput = document.getElementById('search').value.toLowerCase();
-  
-    fetchData(function (data) {
+
+        fetchData(function (data) {
         var searchResult = Object.keys(data)
             .filter(id => data[id].jobName.toLowerCase().includes(searchInput))
             .reduce((result, id) => {
+                console.log("code reached");
                 result[id] = data[id];
                 return result;
-            }, {});
-  
-        showData(searchResult);
+            },{});
+            console.log("code reached");
+        createJobListings(searchResult);
     });
+    
 }
 // Function to navigate to jobinfo.html with the specific job ID
 function viewJobDetails(jobId) {
