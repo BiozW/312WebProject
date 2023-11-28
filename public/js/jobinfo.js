@@ -1,3 +1,4 @@
+
 // Function to fetch data from the JSON file
 function fetchData(callback) {
     var xhr = new XMLHttpRequest();
@@ -41,7 +42,6 @@ function showJobDetails(data, jobId) {
 function viewJobDetails(jobId) {
     window.location.href = `jobinfo.html?id=${jobId}`;
 }
-
 // Initial page load
 window.onload = function () {
     var jobId = getJobIdFromUrl();
@@ -52,7 +52,22 @@ window.onload = function () {
     } else {
         console.error("Job ID not specified in the URL");
     }
+
+	document.getElementById('postbutton').onclick = getData;
+	
+	var username = getCookie('username');
+
+	document.getElementById("username").innerHTML = username;
+	readPost();
+
 };
+
+async function getData(){
+	var msg = document.getElementById("textmsg").value;
+	document.getElementById("textmsg").value = "";
+	await writePost(msg);
+	await readPost();
+}
 function saveJob() {
     var jobId = getJobIdFromUrl();
     
@@ -74,27 +89,29 @@ function saveJob() {
 }
 
 //ระบบคอมเม้น
-async function readPost() {
+async function readPost(){
 	let response = await fetch("/readPost");
-	let content = await response.json();
-	showPost(content);
-  }
-  
-  // complete it
-  async function writePost(msg) {
+  	let content = await response.json();
+  	showPost(content);
 	
-    let response = await fetch("/writePost", {
-	  method: "POST",
-	  headers: {
-		Accept: "application/json",
-		"Content-Type": "application/json",
-	  },
-	  body: JSON.stringify({
-		user: getCookie("username"),
-		message: msg,
-	  }),
-	});
-  }
+}
+
+// complete it
+async function writePost(msg){
+	let response = await fetch("/writePost", {
+		method: "POST",
+		headers: {
+		  Accept: "application/json",
+		  "Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+		  user: getCookie("username"),
+		  message: msg,
+		}),
+	  });
+}
+
+
   
   // แสดง post ที่อ่านมาได้ ลงในพื้นที่ที่กำหนด
   function showPost(data) {
@@ -117,6 +134,29 @@ async function readPost() {
 	  temp.appendChild(temp1);
 	}
   }
+
+// function showPost(data){
+// 	var keys = Object.keys(data);
+// 	var divTag = document.getElementById("feed-container");
+// 	divTag.innerHTML = "";
+// 	for (var i = keys.length-1; i >=0 ; i--) {
+
+// 		var temp = document.createElement("div");
+// 		temp.className = "newsfeed";
+// 		divTag.appendChild(temp);
+// 		var temp1 = document.createElement("div");
+// 		temp1.className = "postmsg";
+// 		//message -> post
+// 		temp1.innerHTML = data[keys[i]]["post"];
+// 		temp.appendChild(temp1);
+// 		var temp1 = document.createElement("div");
+// 		temp1.className = "postuser";
+// 		//user -> username
+// 		temp1.innerHTML = "Posted by: "+data[keys[i]]["username"];
+// 		temp.appendChild(temp1);
+		
+// 	}
+// }
 // Function to get the job ID from the URL
 function getJobIdFromUrl() {
     var urlParams = new URLSearchParams(window.location.search);
