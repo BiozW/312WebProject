@@ -54,7 +54,6 @@ function Searchdata() {
                 result[id] = data[id];
                 return result;
             }, {});
-  
         createJobListings(searchResult);
     });
 }

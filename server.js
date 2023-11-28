@@ -61,7 +61,7 @@ const queryDB = (sql) => {
   });
 };
 
-//LOGIN
+//register to Database
 app.post("/regisDB", (req, res) => {
   let now_date = new Date().toISOString().slice(0, 19).replace("T", " ");
 
@@ -202,7 +202,29 @@ app.get("/logout", (req, res) => {
   return res.redirect("index.html");
 });
 
-//Register
+//ทำให้สมบูรณ์
+app.get("/readPost", async (req, res) => {
+  let sql = "CREATE TABLE IF NOT EXISTS userPost (username VARCHAR(255), post VARCHAR(500))";
+  let result = await queryDB(sql);
+  sql = `SELECT username, post FROM userPost`;
+  result = await queryDB(sql);
+  result = Object.assign({}, result);
+  console.log(result);
+  res.json(result);
+});
+
+// ทำให้สมบูรณ์
+app.post("/writePost", async (req, res) => {
+  let sql =
+  "CREATE TABLE IF NOT EXISTS userPost (username VARCHAR(255), post VARCHAR(500))";
+let result = await queryDB(sql);
+sql = `INSERT INTO userPost (username,post) VALUES ("${req.body.user}", "${req.body.message}")`;
+result = await queryDB(sql);
+res.redirect("jobdetails.html");
+
+});
+
+//checklogin
 app.post("/checkLogin", async (req, res) => {
     let sql = `SELECT username, img, password FROM userInfo`;
     let result = await queryDB(sql);
@@ -238,12 +260,49 @@ app.get("/checklogined", (req, res) => {
   
 });
 
-app.post("savejob",async (req,res) =>{
-  if(sdsddsd){
-    let sql="";
-  }
+const createSavedJobTable = async () => {
+  let sql =
+    "CREATE TABLE IF NOT EXISTS savedjob (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255), savedjobId VARCHAR(255))";
+  let result = await queryDB(sql);
+  console.log("SavedJob table created");
+};
 
-})
+createSavedJobTable(); // Call the function to create the table when the server starts
+
+// Endpoint to save a job
+app.post("/savejob", async (req, res) => {
+  const username = req.cookies.username;
+  const savedjobId = req.body.savedjobId;
+
+  // Check if the job is already saved
+  let sql = `SELECT * FROM savedjob WHERE username='${username}' AND savedjobId='${savedjobId}'`;
+  let result = await queryDB(sql);
+
+  if (result.length > 0) {
+    console.log("Job already saved");
+    res.json({ success: false, message: "Job already saved" });
+  } else {
+    // Save the job
+    sql = `INSERT INTO savedjob (username, savedjobId) VALUES ('${username}', '${savedjobId}')`;
+    result = await queryDB(sql);
+    console.log("Job saved successfully");
+    res.json({ success: true, message: "Job saved successfully" });
+  }
+});
+
+app.get("/fetchSavedJobs", async (req, res) => {
+  try {
+      // Query the database to get saved jobs
+      const sql = "SELECT * FROM savedjob";
+      const result = await queryDB(sql);
+
+      // Send the result as JSON
+      res.json({ success: true, savedJobs: result });
+  } catch (error) {
+      console.error("Error fetching saved jobs:", error);
+      res.status(500).json({ success: false, message: "Internal Server Error" });
+  }
+});
 
 app.listen(port, hostname, () => {
   console.log(`Server running at   http://${hostname}:${port}/index.html`);

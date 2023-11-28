@@ -3,14 +3,14 @@
         "jobName": "Delivery to Geothemal Power Plant", 
         "jobImage": "public/img/geothemal.png", 
         "jobShortText": "ส่งของไปยังโรงผลิตไฟฟ้าใต้พิภพ",
-        "jobLongText":"98rewguyrehgurehguierhguiergyioetrjtiop",
+        "jobLongText":"ส่งแบตเตอรี่ไปโรงผลิตไฟฟ้าใต้พิภพที่เขตสรทา กรุงเทพ",
         "jobCompany":"BL.co",
         "jobLocation": "Bangkok"
         },
     "id2": {
         "jobName": "Long Delivery from Chanthaburi",
         "jobImage": "public/img/",
-        "jobShortText": "รับองสดจากจังหวัดจันทบุรี",
+        "jobShortText": "รับของสดจากจังหวัดจันทบุรี",
         "jobLongText": "รับผลไม้ทางการเกษตรที่จะนำมาวางโชว์ในกิจกรรมเร็วๆนี้",
         "jobCompany": "XYZ Corp",
         "jobLocation": "Chanthaburi"

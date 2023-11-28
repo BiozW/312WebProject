@@ -194,6 +194,10 @@ nav {
     font-size: 16px;
 }
 
+#job-longtext {
+    font-size: 16px;
+}
+
 #save-btn {
     grid-column: 2 /span 1;
     margin-top: 40px;
