@@ -29,6 +29,7 @@ function showJobDetails(data, jobId) {
 
         jobNameContainer.innerText = jobData.jobName;
         jobShortTextContainer.innerText = jobData.jobShortText;
+        jobLongTextContainer.innerText = jobData.jobLongText;
         jobCompanyContainer.innerText = "Company: " + jobData.jobCompany;
         jobLocationContainer.innerText = "Location: " + jobData.jobLocation;
     } else {

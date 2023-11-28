@@ -27,7 +27,7 @@ function createJobListings(data) {
         jobContainer.classList.add("joblist");
 
         jobContainer.innerHTML = `
-            <div id="job-img"></div>
+            <div id="job-img">${jobData.JobImage}</div>
             <div id="job-shortdetail">
                 <div id="job-name">${jobData.jobName}</div>
                 <div id="job-shorttext">${jobData.jobShortText}</div>
@@ -46,7 +46,7 @@ function createJobListings(data) {
 
 function Searchdata() {
     var searchInput = document.getElementById('search').value.toLowerCase();
-  
+    
     fetchData(function (data) {
         var searchResult = Object.keys(data)
             .filter(id => data[id].jobName.toLowerCase().includes(searchInput))
