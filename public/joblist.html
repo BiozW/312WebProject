@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/images/Icon.png" type="image/F-icon">
+    <link rel="icon" href="../images/Icon.png" type="image/F-icon">
     <link rel="stylesheet" href="css/joblist.css">
     <script type="text/javascript" src="js/search.js"></script>
     <title>Fare :D | Explore</title>
@@ -11,18 +11,18 @@
 <body>
     <nav class="nav-container">
         <div id="nav-logo" >
-            <a href="/public/index.html">
+            <a href="/index.html">
                 <span>Fare <span id="judjud">:</span>D
             </span>
             </a>
         </div>
         <div class="nav-search-container">
-            <form onsubmit="Searchdata(event)">
+            <form id="formjobbox">
                 <div id="findjobbox">
-                    <input id="search" type="text" value="" placeholder="What job are you interested?">
+                    <input id="search" type="text" value="" placeholder="What job are you interested?" >  
                 </div>
                 <div id="seacrhbtn">
-                    <button type="submit">Search</button>
+                    <button onclick="Searchdata()">Search</button>
                 </div>
             </form>
             
@@ -41,16 +41,16 @@
                     <option value="2">Chanthaburi</option>                
                 </select>
             </div> 
-            <div id="resetbtn">
+            <!-- <div id="resetbtn">
                 <button>Reset</button>
-            </div>
+            </div> -->
         </div>
         <div id="nav-main">
             <a href="joblist.html" >Explore</a>
             <a href="login.html" >Login</a>
-            <a href="profile.html">
-                <img id="Portrait" src="/images/userbaseicon.png" >
-            </a>    
+            <a id="profile" onclick="window.location.href = 'profile.html'">
+                Profile
+            </a> 
         </div>
     </nav>
     <main class="main-container">

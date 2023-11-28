@@ -4,42 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/profile.css">
-    <link rel="icon" href="/images/Icon.png" type="image/F-icon">
+    <link rel="icon" href="/images/Icon.png" type="image/png">
+    <script type="text/javascript" src="js/profile.js"></script>
     <title>Fare :D | Profile</title>
 </head>
 <body>
     <nav class="nav-container">
         <div id="nav-logo" >
-            <a href="/public/index.html">
-                <span>Fare <span id="judjud">:</span>D
-            </span>
+            <a href="/index.html">
+                <span>Fare <span id="judjud">:</span>D</span>
             </a>
         </div>
         <div id="nav-main">
             <a href="joblist.html" >Explore</a>
-            <a href="login.html" >Login</a>
-            <a href="profile.html">
-                <img id="Portrait" src="/images/userbaseicon.png" >
-            </a>    
+            <a href="profile.html">Profile</a>    
+            
         </div>
     </nav>
     <main class="main-container">
         <div id="profileleftheadbox">
             <h1 id="profile-name">
-                HARIT
+                Username
             </h1>
             <h2 id="profile-fullname">
-                Harit Tojumlearn
+                Name Surname
             </h2>
             <h3 id="profile-company">
-                Paradox Interactive .co
+                Company
             </h3>
-            <h3 id="location">
-                Thailand
+            <h3 id="profile-location">
+                Location
             </h3>
             <h4 id="profile-call">
                 Call No.
-                <span id="profile-callnumber">
+                <span id="profile_callnumber">
                     0999999999
                 </span>
             </h4>
@@ -47,7 +45,9 @@
         </div>
         <div id="profilerightheadbox">
             <div id="profile-portait">
-                <img src="/images/userbaseicon.png" >    
+                    <div id="displayPic">
+                        <img  src= "img/avatar.png" alt="img/avatar.png">
+                    </div>
             </div>
             <div>
                 <button onclick="window.location.href = 'profileedit.html'">
@@ -60,7 +60,7 @@
                 </button>
             </div>
             <div>
-                <button>
+                <button onclick="window.location.href = '/logout'">
                     Log Out
                 </button>
             </div>
@@ -75,7 +75,7 @@
             <div id="skillsbox">
                 <h2>Skills</h2>
                 <div>
-                    <span id="skilldetail"></span>
+                    <p id="skilldetail">Ahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>
                 </div>
             </div>
             <div id="activitybox">
