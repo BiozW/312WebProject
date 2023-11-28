@@ -309,8 +309,9 @@ app.post("/savejob", async (req, res) => {
 
 app.get("/fetchSavedJobs", async (req, res) => {
   try {
+      const username = req.cookies.username;
       // Query the database to get saved jobs
-      const sql = "SELECT * FROM savedjob";
+      const sql = `SELECT * FROM savedjob WHERE username='${username}'`;
       const result = await queryDB(sql);
 
       // Send the result as JSON
