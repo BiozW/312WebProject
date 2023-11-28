@@ -1,6 +1,6 @@
 {
     "id1":{
-        "jobName": "Delivery to Geothemal Power Plant", 
+        "jobName  Profile": "Delivery to Geothemal Power Plant", 
         "jobImage": "img/geothemal.png", 
         "jobShortText": "ส่งของไปยังโรงผลิตไฟฟ้าใต้พิภพ",
         "jobLongText":"ส่งแบตเตอรี่ไปโรงผลิตไฟฟ้าใต้พิภพที่เขตสรทา กรุงเทพ",
@@ -8,7 +8,7 @@
         "jobLocation": "Bangkok"
         },
     "id2": {
-        "jobName": "Long Delivery from Chanthaburi",
+        "jobName  Profile": "Long Delivery from Chanthaburi",
         "jobImage": "img/commecial.png",
         "jobShortText": "รับของสดจากจังหวัดจันทบุรี",
         "jobLongText": "รับผลไม้ทางการเกษตรที่จะนำมาวางโชว์ในกิจกรรมเร็วๆนี้",
@@ -16,13 +16,67 @@
         "jobLocation": "Chanthaburi"
         },
     "id3":{
-        "jobName": "Delivery to Commecial Zones", 
-        "jobImage": "img/BKing02.png", 
+        "jobName  Profile": "Delivery to Commecial Zones", 
+        "jobImage": "img/commecial.png", 
         "jobShortText": "ส่งของไปยังโรงผลิตไฟฟ้าใต้พิภพ",
         "jobLongText":"ส่งสินค้าแฟชั่นสุดมหัศจรรย์ว์ย์ไปยังร้านค้าที่ถนนทองบุรี เขตบางบู้ว",
         "jobCompany":"Monject.co",
         "jobLocation": "Bangkok"
-        }
-        
-
+        },
+    "id4": {
+        "jobName  Profile": "Software Engineer",
+        "jobImage": "img/powerplant.png",
+        "jobShortText": "พัฒนาซอฟต์แวร์และแก้ไขปัญหาทางเทคนิค",
+        "jobLongText": "ต้องการนักพัฒนาซอฟต์แวร์ที่มีความเชี่ยวชาญในการพัฒนาและแก้ไขปัญหาทางเทคนิคสำหรับโปรแกรมต่างๆ",
+        "jobCompany": "TechGenius Solutions",
+        "jobLocation": "Bangkok"
+    },
+    "id5": {
+        "jobName  Profile": "Graphic Designer",
+        "jobImage": "img/office.png",
+        "jobShortText": "ออกแบบกราฟิกส์สร้างสรรค์",
+        "jobLongText": "ต้องการนักออกแบบกราฟิกที่มีความคิดสร้างสรรค์และมีประสบการณ์ในการออกแบบสื่อต่างๆ",
+        "jobCompany": "CreativaDesign Studio",
+        "jobLocation": "Bangkok"
+    },
+    "id6": {
+        "jobName  Profile": "Financial Analyst",
+        "jobImage": "img/powerplant.png",
+        "jobShortText": "วิเคราะห์ทางการเงินและการลงทุน",
+        "jobLongText": "ต้องการนักวิเคราะห์ทางการเงินที่มีความเชี่ยวชาญในการวิเคราะห์และให้คำแนะนำเกี่ยวกับการลงทุน",
+        "jobCompany": "FinanceWise Advisors",
+        "jobLocation": "Bangkok"
+    },
+    "id7": {
+        "jobName  Profile": "Customer Service Representative",
+        "jobImage": "img/powerplant.png",
+        "jobShortText": "ติดต่อบริการลูกค้า",
+        "jobLongText": "ต้องการพนักงานบริการลูกค้าที่มีทักษะในการแก้ไขปัญหาและให้คำแนะนำแก่ลูกค้า",
+        "jobCompany": "ServiceFirst Solutions",
+        "jobLocation": "Bangkok"
+    },
+    "id8": {
+        "jobName  Profile": "Human Resources Manager",
+        "jobImage": "img/office.png",
+        "jobShortText": "จัดการทรัพยากรบุคคล",
+        "jobLongText": "ต้องการผู้จัดการทรัพยากรบุคคลที่มีประสบการณ์ในการจัดการและพัฒนาทรัพยากรบุคคลในองค์กร",
+        "jobCompany": "HRHub Co., Ltd.",
+        "jobLocation": "Bangkok"
+    },
+    "id9": {
+        "jobName  Profile": "Sales Representative",
+        "jobImage": "img/office.png",
+        "jobShortText": "พนักงานขาย",
+        "jobLongText": "ต้องการพนักงานขายที่มีความสามารถในการประสานงานกับลูกค้าและมีทักษะการขายที่ดี",
+        "jobCompany": "SalesPro Enterprises",
+        "jobLocation": "Bangkok"
+    },
+    "id10": {
+        "jobName  Profile": "Content Writer",
+        "jobImage": "img/office.png",
+        "jobShortText": "เขียนเนื้อหา",
+        "jobLongText": "ต้องการนักเขียนเนื้อหาที่มีความคิดสร้างสรรค์ในการเขียนและสร้างเนื้อหาที่น่าสนใจ",
+        "jobCompany": "WriteCraft Media",
+        "jobLocation": "Bangkok"
+    }
 }
