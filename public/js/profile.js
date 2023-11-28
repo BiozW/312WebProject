@@ -26,10 +26,37 @@ function pageLoad(){
 	document.getElementById("profile-name").innerHTML = username;
 	console.log(getCookie('img'));
 	showImg('img/'+getCookie('img'));
-    Updatepersonalinfo(username);
+    Updatepersonalinfo();
+	Updatepersonaport();
 }
 
-function Updatepersonalinfo(name){
+function Updatepersonalinfo(){
+	fetch('/showPersonalData')
+    .then(response => response.json())
+    .then(data => {
+      // นำข้อมูลที่ได้จากเซิร์ฟเวอร์มาแสดงผลใน HTML
+      document.getElementById('profile-name').textContent = data.username;
+      document.getElementById('profile-fullname').textContent = `${data.firstname} ${data.surname}`;
+	  document.getElementById('profile-company').textContent = `${data.company}`;
+	  document.getElementById('profile-location').textContent = `${data.location}`;
+	  document.getElementById('profile_callnumber').textContent = `${data.phone_number}`;
+      // แสดงข้อมูลอื่น ๆ ที่ต้องการ
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function Updatepersonaport(){
+	fetch('/showPersonalPort')
+    .then(response => response.json())
+    .then(data => {
+      // นำข้อมูลที่ได้จากเซิร์ฟเวอร์มาแสดงผลใน HTML
+      document.getElementById('aboutdetail').innerHTML = data.about;
+      document.getElementById('skilldetail').innerHTML = data.skill;
+	  document.getElementById('activitydetail').innerHTML = data.activity;
+	  document.getElementById('educationdetail').innerHTML = data.education;
+      // แสดงข้อมูลอื่น ๆ ที่ต้องการ
+    })
+    .catch(error => console.error('Error:', error));
 }
 
 function getData(){

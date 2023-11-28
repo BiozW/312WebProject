@@ -53,63 +53,61 @@
             <button id="update-btn">Update</button> -->
             
         </div>
-        <div id="profileunderheadbox">
-            <div id="profile-position">
-                <h3>Current Position</h3>
-                <input type="text" placeholder="Position">
+        <form id="profileunderheadbox" action="/updatePersonalData" method="post">
+            <div id="profile-name">
+                <h3>Name</h3>
+                <input type="text" name="firstname" placeholder="Name">
+            </div>
+            <div id="profile-surname">
+                <h3>Surname</h3>
+                <input type="text" name="surname" placeholder="Sername">
             </div>
             <div id="profile-work">
                 <h3>Working At</h3>
-                <input type="text" placeholder="Working At">
+                <input type="text" name="work" placeholder="Working At">
             </div>
             <div id="profile-location">
                 <h3>Location</h3>
-                <input type="text" placeholder="Location">
+                <input type="text" name="location" placeholder="Location">
             </div>
-            <div id="profile-name">
-                <h3>Name</h3>
-                <input type="text" placeholder="Name">
-            </div>
-            <div id="profile-surname">
-                <h3>Sername</h3>
-                <input type="text" placeholder="Sername">
-            </div>
-            <div id="position">
+            <div id="profile-call">
                 <h3>Call</h3>
-                <input type="text" placeholder="Call">
+                <input type="text" name="call" placeholder="Call">
             </div>
-        </div>
-        <div id="profiledetail">
+            <div id="save-btn">
+                <input type="submit" name="submit" value="Save">
+            </div>
+        </form>
+        <form id="profiledetail" action="/updatePersonalPort" method="post">
             <div id="aboutbox">
                 <h2>About</h2>
                 <div>
-                    <textarea id="aboutdetail"></textarea>
+                    <textarea name="about" id="aboutdetail"></textarea>
                 </div>
             </div>
             <div id="skillsbox">
                 <h2>Skills</h2>
                 <div>
-                    <textarea id="skilldetail"></textarea>
+                    <textarea name="skills" id="skilldetail"></textarea>
                 </div>
             </div>
             <div id="activitybox">
                 <h2>Activity</h2>
                 <div>
-                    <textarea id="activitydetail"></textarea>
+                    <textarea name="activity" id="activitydetail"></textarea>
                 </div>
             </div>
             <div id="educationbox">
                 <h2>Education</h2>
                 <div>
-                    <textarea id="educationdetail"></textarea>
+                    <textarea name="education" id="educationdetail"></textarea>
                 </div>
             </div>
-        </div>
-        <div id="save-btn">
-            <button>
-                Save
-            </button>
-        </div>
+            <div id="save-btn">
+                <input type="submit" name="submit" value="Save">
+            </div>
+        </form>
+        
     </main>
     <footer>
         <span>Copyright ©2023 Fare-D Studio. All rights reserved.</span>

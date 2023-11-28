@@ -20,21 +20,15 @@ function getCookie(name){
 }
 
 function pageLoad(){
+
 	document.getElementById('uploadpic').onclick = fileUpload;
 	document.getElementById('fileField').onchange = fileSubmit;
-	
+
 	var username = getCookie('username');
 	console.log(getCookie('img'));
 	showImg('img/'+getCookie('img'));
     Updatepersonalinfo(username);
 	readPost();
-}
-
-
-function getData(){
-	var msg = document.getElementById("textmsg").value;
-	document.getElementById("textmsg").value = "";
-	writePost(msg);
 }
 
 function fileUpload(){
@@ -55,4 +49,5 @@ function showImg(filename){
 		showpic.appendChild(temp);
 	}
 }
+
 

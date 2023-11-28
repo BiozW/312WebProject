@@ -10,6 +10,7 @@ const path = require("path");
 const mysql = require("mysql");
 const { userInfo } = require("os");
 const { constrainedMemory } = require("process");
+const { profile } = require("console");
 
 app.use(express.static("public"));
 app.use(bodyParser.json());
@@ -61,53 +62,109 @@ const queryDB = (sql) => {
 };
 
 //LOGIN
-app.post("/regisDB", async (req, res) => {
+app.post("/regisDB", (req, res) => {
   let now_date = new Date().toISOString().slice(0, 19).replace("T", " ");
-  let sql =
-    "CREATE TABLE IF NOT EXISTS userInfo (id INT AUTO_INCREMENT PRIMARY KEY, reg_date TIMESTAMP, username VARCHAR(255), email VARCHAR(100),password VARCHAR(100),img VARCHAR(100))";
-  let result = await queryDB(sql);
-  sql = `INSERT INTO userInfo (username, reg_date, email, password, img) VALUES ("${req.body.username}", "${now_date}","${req.body.email}", "${req.body.password}", "avatar.png")`;
-  result = await queryDB(sql);
-  return res.redirect("login.html");
+
+  let sqlCreateTable =
+    "CREATE TABLE IF NOT EXISTS userInfo (id INT AUTO_INCREMENT PRIMARY KEY, reg_date TIMESTAMP, username VARCHAR(255), email VARCHAR(100), password VARCHAR(100), img VARCHAR(100), firstname VARCHAR(255), surname VARCHAR(255), company VARCHAR(255), location VARCHAR(255), phone_number VARCHAR(10), about TEXT, skill TEXT, activity TEXT, education TEXT)";
+
+  // Execute CREATE TABLE query
+  con.query(sqlCreateTable, (err) => {
+    if (err) {
+      console.error("Error creating table:", err);
+      return res.status(500).send("An error occurred while processing your request");
+    }
+
+    let sqlInsertData = `INSERT INTO userInfo (username, reg_date, email, password, img, firstname, surname, company, location, phone_number, about, skill, activity, education) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  
+    let insertValues = [
+      req.body.username,
+      now_date,
+      req.body.email,
+      req.body.password,
+      "avatar.png",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ];
+
+    // Execute INSERT INTO query
+    con.query(sqlInsertData, insertValues, (err) => {
+      if (err) {
+        console.error("Error inserting data:", err);
+        return res.status(500).send("An error occurred while processing your request");
+      }
+
+      // Redirect after successful insertion
+      return res.redirect("login.html");
+    });
+  });
 });
 
-// app.post('/regisDB', async (req,res) => {
-//   const { username, email, password, confirmPassword } = req.body;
+app.post('/updatePersonalData', (req, res) => {
+  const { firstname, surname, work, location, call } = req.body;
 
-//   if (!validateForm(password, confirmPassword)) {
-//       return res.redirect('register.html?error=2'); // รหัสผ่านไม่ตรงกัน
-//   }
+  const username = req.cookies.username;
+  
+  const sql = `UPDATE userInfo 
+               SET firstname = '${firstname}', 
+                   surname = '${surname}', 
+                   company = '${work}', 
+                   location = '${location}', 
+                   phone_number = '${call}' 
+               WHERE username = '${username}'`;
+  con.query(sql, (err, result) => {
+    if (err) {
+      throw err;
+    }
+    console.log('Data inserted:', result);
+    return res.redirect("profileedit.html");
+  });
+});
 
-//   try {
-//       // สร้างตาราง userInfo ถ้ายังไม่มี
-//       const createTableQuery = "CREATE TABLE IF NOT EXISTS userInfo (id INT AUTO_INCREMENT PRIMARY KEY, reg_date TIMESTAMP, username VARCHAR(255), email VARCHAR(100), password VARCHAR(100), confirmPassword VARCHAR(100), img VARCHAR(100))";
-//       await queryDB(createTableQuery);
+app.post('/updatePersonalPort', (req, res) => {
+  const aboutText = req.body.about || ''; // ตรวจสอบและแทนที่ค่าว่างด้วยค่าเริ่มต้นเมื่อข้อมูลมาจาก textarea เป็นค่าว่าง
+  const skillsText = req.body.skills || '';
+  const activityText = req.body.activity || '';
+  const educationText = req.body.education || '';
 
-//       // สร้างตาราง post ถ้ายังไม่มี
-//       const createTablePost = "CREATE TABLE IF NOT EXISTS userpost (id INT AUTO_INCREMENT PRIMARY KEY, reg_date TIMESTAMP, post VARCHAR(255), username VARCHAR(255))";
-//       await queryDB(createTablePost);
+  const username = req.cookies.username;
 
-//       // ตรวจสอบว่า username ซ้ำหรือไม่
-//       const checkUsernameQuery = `SELECT * FROM userInfo WHERE username = "${username}"`;
-//       const existingUser = await queryDB(checkUsernameQuery);
+  const sql = `UPDATE userInfo SET about = ?, skill = ?, activity = ?, education = ? WHERE username = ?`; // ใช้ ? ในการส่งค่าพารามิเตอร์
 
-//       if (existingUser.length > 0) {
-//           console.log("Username is already taken");
-//           return res.redirect('register.html?error=1');
-//       }
+  con.query(sql, [aboutText, skillsText, activityText, educationText, username], (err, result) => {
+    if (err) {
+      console.error('Error while updating data:', err);
+      res.status(500).send('Error while updating data');
+    } else {
+      console.log('Data updated successfully');
+      res.redirect("profileedit.html");
+    }
 
-//       // Username ไม่ซ้ำ, ทำการลงทะเบียนผู้ใช้
-//       const insertUserQuery = `INSERT INTO userInfo (username, email, password, confirmPassword, img) VALUES ("${username}", "${email}", "${password}", "${confirmPassword}", "avatar.png")`;
-//       await queryDB(insertUserQuery);
+  });
+});
 
-//       console.log("New record created successfully");
-//       return res.redirect('login.html');
-//   } catch (error) {
-//       console.error('Error checking username or inserting new record:', error);
-//       return res.status(500).json({ error: 'Internal Server Error' });
-//   }
-// })
+app.get('/showPersonalData', (req, res) => {
+  const username = req.cookies.username; // หรือวิธีการรับค่า username ของผู้ใช้
 
+  const sql = `SELECT * FROM userInfo WHERE username = '${username}'`;
+
+  con.query(sql, (err, result) => {
+    if (err) {
+      throw err;
+    }
+
+    const userData = result[0]; // ข้อมูลของผู้ใช้
+
+    res.json(userData); // ส่งข้อมูลผู้ใช้กลับไปยังเบราว์เซอร์ในรูปแบบ JSON
+  });
+});
 
 
 app.post('/profilepic', (req,res) => {
@@ -144,28 +201,6 @@ app.get("/logout", (req, res) => {
   res.clearCookie("img");
   return res.redirect("index.html");
 });
-
-//ทำให้สมบูรณ์
-// app.get("/readPost", async (req, res) => {
-//   let sql =
-//     "CREATE TABLE IF NOT EXISTS userPost (username VARCHAR(255), post VARCHAR(500))";
-//   let result = await queryDB(sql);
-//   sql = `SELECT post, username FROM userPost`;
-//   result = await queryDB(sql);
-//   result = Object.assign({}, result);
-//   console.log(result);
-//   res.json(result);
-// });
-
-//ทำให้สมบูรณ์
-// app.post("/writePost", async (req, res) => {
-//     let sql =
-//     "CREATE TABLE IF NOT EXISTS userPost (username VARCHAR(255), post VARCHAR(500))";
-//   let result = await queryDB(sql);
-//   sql = `INSERT INTO userPost (username,post) VALUES ("${req.body.user}", "${req.body.message}")`;
-//   result = await queryDB(sql);
-//   res.redirect("feed.html");
-// });
 
 //Register
 app.post("/checkLogin", async (req, res) => {
