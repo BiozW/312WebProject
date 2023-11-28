@@ -166,6 +166,23 @@ app.get('/showPersonalData', (req, res) => {
   });
 });
 
+app.get('/SavedJob', (req, res) => {
+  const username = req.cookies.username; // หรือวิธีการรับค่า username ของผู้ใช้
+
+  const sql = `SELECT * FROM savedjob WHERE username = '${username}'`;
+
+  con.query(sql, (err, result) => {
+    if (err) {
+      throw err;
+    }
+
+    const userJobs = result; // ข้อมูลของผู้ใช้ทั้งหมดที่ตรงกับ username
+
+    res.json(userJobs); // ส่งข้อมูลผู้ใช้ทั้งหมดกลับไปยังเบราว์เซอร์ในรูปแบบ JSON
+  });
+});
+
+
 
 app.post('/profilepic', (req,res) => {
   let upload = multer({ storage: storage, fileFilter: imageFilter }).single(

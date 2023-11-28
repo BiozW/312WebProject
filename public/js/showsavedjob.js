@@ -1,3 +1,38 @@
+function fetchData(callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "js/job_data.json");
+    xhr.onload = function () {
+        
+        if (xhr.status === 200) {
+            var jsonData = JSON.parse(xhr.responseText);
+            callback(jsonData);
+        } else {
+            console.error("Failed to fetch data");
+        }
+    };
+    xhr.onerror = function () {
+        console.error("Error during the XMLHttpRequest");
+    };
+    xhr.send();
+}
+// function checkid(dataid,compare){
+// 	fetch('/showPersonalData')
+//     .then(response => response.json())
+//     .then(data => {
+//       // นำข้อมูลที่ได้จากเซิร์ฟเวอร์มาแสดงผลใน HTML
+//       compare = data.savedjobid;
+//     })
+//     .catch(error => console.error('Error:', error));
+//     return compare;
+// }
+
+// async function readPost(){
+// 	let response = await fetch('/showPersonalData');
+//   	let content = await response.json();
+//   	createJobListings(content);
+	
+// }
+
 function createJobListings(data) {
     var mainContainer = document.querySelector(".main-container");
 
@@ -8,7 +43,8 @@ function createJobListings(data) {
         jobContainer.classList.add("joblist");
 
         jobContainer.innerHTML = `
-            <div id="job-img">${jobData.JobImage}</div>
+            <span>${jobId}</span>
+            <div id="job-img"><img src="${jobData.jobImage}" alt="${jobData.jobImage}"></div>
             <div id="job-shortdetail">
                 <div id="job-name">${jobData.jobName}</div>
                 <div id="job-shorttext">${jobData.jobShortText}</div>
@@ -18,11 +54,12 @@ function createJobListings(data) {
             <div id="seemore-btn">
                 <button onclick="viewJobDetails('${jobId}')">See More</button>
             </div>
-        `
+        `;
         // Append the job listing div to the main container
         mainContainer.appendChild(jobContainer);
     }
 }
+
 
 function Searchdata() {
 
@@ -48,6 +85,7 @@ function viewJobDetails(jobId) {
 
 window.onload = function () {
     fetchData(createJobListings);
+    
 };
 
 // document.addEventListener("DOMContentLoaded", function () {
