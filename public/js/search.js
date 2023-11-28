@@ -46,13 +46,14 @@ function createJobListings(data) {
 function Searchdata() {
 
     var searchInput = document.getElementById('search').value.toLowerCase();
+    var mainContainer = document.querySelector(".main-container");
 
+        mainContainer.innerHTML = "";
         fetchData(function (data) {
         var searchResult = Object.keys(data)
             .filter(id => data[id].jobName.toLowerCase().includes(searchInput))
             .reduce((result, id) => {
                 result[id] = data[id];
-                alert("path entered");
                 return result;
             },{});
         createJobListings(searchResult);
