@@ -3,6 +3,40 @@ body {
     background-color: #17171B;
 }
 
+.newsfeed{
+	display: flex;
+	width: 100%;
+	text-align: left;
+	font-size: 20px;
+	margin-top: 15px;
+}
+
+.postmsg{
+	border-radius: 20px;
+	width: 50%;
+	background-color: #FEBE9A;
+	margin-left: 15px;
+
+	height: 100px;
+	text-align: center;
+	line-height: 100px;
+	min-width: 200px;
+}
+
+.postuser {
+    border-radius: 20px;
+	width: 50%;
+	background-color: #ffffff;
+	margin-left: 15px;
+
+	height: 100px;
+	width:50%;
+	text-align: center;
+	line-height: 100px;
+	min-width: 200px;
+}
+
+
 nav {
     overflow: hidden;
     display: flex;
