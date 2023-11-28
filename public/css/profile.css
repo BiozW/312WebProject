@@ -125,6 +125,10 @@ nav {
     
 }
 
+#profiledetail > div > div > span {
+    padding: 10px;
+}
+
 #displayPic{
     width: 100%;
     height: 100%;
