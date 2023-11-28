@@ -46,14 +46,14 @@ function Updatepersonalinfo(){
 }
 
 function Updatepersonaport(){
-	fetch('/showPersonalPort')
+	fetch('/showPersonalData')
     .then(response => response.json())
     .then(data => {
       // นำข้อมูลที่ได้จากเซิร์ฟเวอร์มาแสดงผลใน HTML
-      document.getElementById('aboutdetail').innerHTML = data.about;
-      document.getElementById('skilldetail').innerHTML = data.skill;
-	  document.getElementById('activitydetail').innerHTML = data.activity;
-	  document.getElementById('educationdetail').innerHTML = data.education;
+      document.getElementById('aboutdetail').innerText = data.about;
+      document.getElementById('skilldetail').innerText = data.skill;
+	  document.getElementById('activitydetail').innerText = data.activity;
+	  document.getElementById('educationdetail').innerText = data.education;
       // แสดงข้อมูลอื่น ๆ ที่ต้องการ
     })
     .catch(error => console.error('Error:', error));
