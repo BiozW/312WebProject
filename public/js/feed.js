@@ -26,7 +26,11 @@ function pageLoad(){
 
 	document.getElementById("username").innerHTML = username;
 	readPost();
+
 }
+
+setInterval(readPost(),2000);
+
 
 function getData(){
 	var msg = document.getElementById("textmsg").value;
@@ -67,15 +71,16 @@ async function writePost(msg){
     }
 }
 
+
 // แสดง post ที่อ่านมาได้ ลงในพื้นที่ที่กำหนด
 function showPost(data){
 	var keys = Object.keys(data);
-	var divTag = document.getElementById("feed-container");
+	var divTag = document.getElementById("comment-container");
 	divTag.innerHTML = "";
 	for (var i = keys.length-1; i >=0 ; i--) {
 
 		var temp = document.createElement("div");
-		temp.className = "newsfeed";
+		temp.className = "comment";
 		divTag.appendChild(temp);
 		var temp1 = document.createElement("div");
 		temp1.className = "postmsg";
@@ -84,7 +89,7 @@ function showPost(data){
 		var temp1 = document.createElement("div");
 		temp1.className = "postuser";
 		
-		temp1.innerHTML = "Posted by: "+data[keys[i]]["username"];
+		temp1.innerHTML = ""+data[keys[i]]["username"];
 		temp.appendChild(temp1);
 		
 	}
