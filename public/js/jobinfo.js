@@ -51,10 +51,20 @@ window.onload = function () {
     } else {
         console.error("Job ID not specified in the URL");
     }
+
+	document.getElementById('postbutton').onclick = getData;
+
 };
 
 // Function to get the job ID from the URL
 function getJobIdFromUrl() {
     var urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('id');
+}
+
+async function getData(){
+	var msg = document.getElementById("textmsg").value;
+	document.getElementById("textmsg").value = "";
+	await writePost(msg);
+	await readPost();
 }
